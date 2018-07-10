@@ -1,6 +1,12 @@
 ﻿#ifndef _Object
 #define _Object
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <array>
+
 class Growth
 {
 public:
@@ -33,21 +39,10 @@ public:
 	System::String^ format();
 
 private:
-	double density;
-	double elasticity;
-	double yield;
-	double nodeSpacing;
-	int limit;
-	double gravity;
-	int seed[3];
-	int target[3];
-	std::vector<double> resultantDisplace;
-	std::vector<double> displacement[3];
-	std::vector<double> matrix{};
-	std::vector<std::vector<int> > vertices;
-	std::vector<std::vector<int> > faces;
-	std::vector<int> xref;
-	std::vector<int> yref;
-	std::vector<int> zref;
+	double density, elasticity, yield, nodeSpacing, gravity;
+	int limit, seed[3], target[3];
+	std::vector<double> matrix, displacement[3], resultantDisplace;
+	std::vector<std::array<int, 3> > vertices, faces;
+	std::array<int, 3> xref, yref, zref;
 };
 #endif
