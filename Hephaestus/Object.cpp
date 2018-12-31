@@ -1,269 +1,36 @@
 ﻿#include "Object.h"
 
-	Growth::Growth() {}
-	Growth::Growth(double densityGrab, double elasticityGrab, double yieldGrab, int limitGrab, double gravityGrab, double nodeSpacingGrab, int seedGrab[3], int targetGrab[3])
+	Obj::Obj() {}
+
+	//Create and remove functions for vertices and faces
+	void Obj::addVertex(double x, double y, double z)
 	{
-		density = densityGrab;
-		elasticity = elasticityGrab * pow(10, 9);
-		yield = yieldGrab * pow(10, 6);
-		limit = limitGrab;
-		gravity = gravityGrab;
-		nodeSpacing = nodeSpacingGrab * pow(10, -4);
-		seed[0] = seedGrab[0];
-		seed[1] = seedGrab[1];
-		seed[2] = seedGrab[2];
-		target[0] = targetGrab[0];
-		target[1] = targetGrab[1];
-		target[2] = targetGrab[2];
-		addVertex(seedGrab[0], seedGrab[1], seedGrab[2]);
-
-		////3D distance
-		//double Mag = sqrt(pow((targetGrab[0] - seedGrab[0]), 2) + pow((targetGrab[1] - seedGrab[1]), 2) + pow((targetGrab[2] - seedGrab[2]), 2));
-		////Horizontal direction
-		//double Hdir;
-		//if ((targetGrab[0] - seedGrab[0]) != 0)
-		//	Hdir = atan((targetGrab[1] - seedGrab[1]) / (targetGrab[0] - seedGrab[0]));
-		//else
-		//	Hdir = 0;
-		////Vertical direction
-		//double Vdir;
-		//if (sqrt(pow((targetGrab[0] - seedGrab[0]), 2) + pow((targetGrab[1] - seedGrab[1]), 2)) != 0)
-		//	Vdir = atan((targetGrab[2] - seedGrab[2]) / sqrt(pow((targetGrab[0] - seedGrab[0]), 2) + pow((targetGrab[1] - seedGrab[1]), 2)));
-		//else
-		//	Vdir = 0;
-		//double vectorMagDir[3]
-		//{
-		//	Mag,Hdir,Vdir
-		//};
-
-		growthFactor();
-	}
-
-	//Needs code to skip over taken vertices & a check of the nearestnodes code
-	void Growth::growthFactor()
-	{
-		while (true)
-		{
-			stressAnalysis();
-
-			for (int i = 0; i < resultantDisplace.size(); i++)
-			{
-				//Check if the node is at its breaking point or is not feeling any strain
-				if ((resultantDisplace[i] > yield || resultantDisplace[i] <= .1) && vertices.size() != 1)
-				{
-					removeVertex(vertices[i][0], vertices[i][1], vertices[i][2]);
-					i--;
-				}
-				//Check to see if the node needs supports
-				else if (resultantDisplace[i] <= yield && resultantDisplace[i] >= yield * limit * .01)
-				{
-					nearestNode(i);
-				}
-				else
-				{
-					//Check if target has been met
-					if (vertices[i][0] == target[0] && vertices[i][1] == target[1] && vertices[i][2] == target[2])
-					{
-						//Check to see if any nodes need supports
-						for (int g = 0; g < resultantDisplace.size(); g++)
-						{
-							if (resultantDisplace[i] <= yield && resultantDisplace[i] >= yield * limit * .01)
-							{
-								nearestNode(g);
-							}
-						}
-						return;
-					}
-					//Build towards target
-					else
-					{
-						nearestNode(i);
-					}
-				}
-			}
-		}
-	}
-
-	//Matrix creation of the displacement of each node
-	void Growth::stressAnalysis()
-	{
-		resultantDisplace.clear();
-		resultantDisplace.resize(vertices.size());
-		matrix.clear();
-		matrix.resize(vertices.size() * 3);
-		displacement[0].clear();
-		displacement[1].clear();
-		displacement[2].clear();
-		displacement[0].resize(vertices.size() * 3);
-		displacement[1].resize(vertices.size() * 3);
-		displacement[2].resize(vertices.size() * 3);
-		for (int i = 0; i < vertices.size(); i++)
-		{
-			for (int c = 0; c < 3; c++)
-			{
-				
-
-				matrix[3 * i + c] = elasticity / nodeSpacing;
-
-				//Add axis specific displacement from neighboring node to matrix
-				//////////////////////////////////////////////////////////////////////////////////////
-				switch (c)
-				{
-				case 0:
-					for (int t = 0; t < vertices.size(); t++)
-					{
-						xref[0] = vertices[i][0] + 1;
-						xref[1] = vertices[i][1];
-						xref[2] = vertices[i][2];
-
-						if (vertices[t] == xref)
-						{
-							matrix[t - 2] = -elasticity / nodeSpacing;
-						}
-					}
-				case 1:
-					for (int t = 0; t < vertices.size(); t++)
-					{
-						yref[0] = vertices[i][0];
-						yref[1] = vertices[i][1] + 1;
-						yref[2] = vertices[i][2];
-
-						if (vertices[t] == yref)
-						{
-							matrix[t - 1] = -elasticity / nodeSpacing;
-						}
-					}
-				case 2:
-					for (int t = 0; t < vertices.size(); t++)
-					{
-						zref[0] = vertices[i][0];
-						zref[1] = vertices[i][1];
-						zref[2] = vertices[i][2] + 1;
-
-						if (vertices[t] == zref)
-						{
-							matrix[t] = -elasticity / nodeSpacing;
-						}
-					}
-				}
-
-				//Calculate each node's displacement
-				//////////////////////////////////////////////////////////////////////////////////////
-				if (matrix[3 * i + c] != 0)
-				{
-					displacement[i][c] = gravity * density / matrix[3 * i + c];
-				}
-			}
-			resultantDisplace[i] += sqrt(pow((displacement[i][0] - vertices[i][0]), 2) + pow((displacement[i][1] - vertices[i][1]), 2) + pow((displacement[i][2] - vertices[i][2]), 2));
-		}
-	}
-
-	//Find the nearest node to the target and seed and create a vertex there
-	void Growth::nearestNode(int i)
-	{
-		//Get Nearest nodes
-		//////////////////////////////////////////////////////////////////////////////////////
-		std::vector<std::array<int, 3> > linked
-		{ 
-			{ vertices[i][0] - 1, vertices[i][1], vertices[i][2] },
-			{ vertices[i][0] + 1, vertices[i][1], vertices[i][2] },
-			{ vertices[i][0], vertices[i][1] - 1, vertices[i][2] },
-			{ vertices[i][0], vertices[i][1] + 1, vertices[i][2] },
-			{ vertices[i][0], vertices[i][1], vertices[i][2] - 1 },
-			{ vertices[i][0], vertices[i][1], vertices[i][2] + 1 } 
-		};
-
-		//Find nearest node's distance to target & sort from smallest to largest
-		//////////////////////////////////////////////////////////////////////////////////////
-		double nearnodes[6]
-		{
-			rint(sqrt(pow((target[0] - linked[0][0]), 2) + pow((target[1] - linked[0][1]), 2) + pow((target[2] - linked[0][2]), 2))),
-			rint(sqrt(pow((target[0] - linked[1][0]), 2) + pow((target[1] - linked[1][1]), 2) + pow((target[2] - linked[1][2]), 2))),
-			rint(sqrt(pow((target[0] - linked[2][0]), 2) + pow((target[1] - linked[2][1]), 2) + pow((target[2] - linked[2][2]), 2))),
-			rint(sqrt(pow((target[0] - linked[3][0]), 2) + pow((target[1] - linked[3][1]), 2) + pow((target[2] - linked[3][2]), 2))),
-			rint(sqrt(pow((target[0] - linked[4][0]), 2) + pow((target[1] - linked[4][1]), 2) + pow((target[2] - linked[4][2]), 2))),
-			rint(sqrt(pow((target[0] - linked[5][0]), 2) + pow((target[1] - linked[5][1]), 2) + pow((target[2] - linked[5][2]), 2)))
-		};
-
-		//Sort nodes
-		std::sort(nearnodes, nearnodes + (sizeof(nearnodes) / sizeof(nearnodes[0])));
-
-		//Create a node as close as possible to target
-		//////////////////////////////////////////////////////////////////////////////////////
-		addVertex(linked[5][0], linked[5][1], linked[5][2]);
-	}
-
-	/*
-	bool Growth::lineIntersect(double start )
-	{
-	double lineIntersect =
-	x1 * Ax * 2−x1*Ax*Cx−x1*Ax*Bx +
-	x1 * Cx*Bx +
-	y1 * Ay * 2−y1*Ay*By−y1*Ay*Cy +
-	y1 * By*Cy +
-	z1 * Bz*Cz−z1*Bz*Az−z1*Cz*Az +
-	z1 * Az * 2−Ax * 3 +
-	Ax * 2 * Cx +
-	Ax * 2 * Bx−Ax*Cx*Bx−Ay * 3 +
-	Ay * 2By +
-	Ay * 2 * Cy−Ay*By*Cy−Bz*Cz*Az +
-	Bz * Az * 2 +
-	Cz * Az * 2−Az * 3 * x1*Ax * 2−x1*Ax*Cx−x1*Ax*Bx +
-	x1 * Cx*Bx +
-	y1 * Ay * 2−y1*Ay*By−y1*Ay*Cy +
-	y1 * By*Cy +
-	z1 * Bz*Cz−z1*Bz*Az−z1*Cz*Az +
-	z1 * Az * 2−x2*Ax * 2 +
-	x2 * Ax*Cx +
-	x2 * Ax*Bx−x2*Cx*Bx−z2*Bz*Cz +
-	z2 * Bz*Az +
-	z2 * Cz*Az−z2*Az * 2−Ay * 2 * y2 +
-	Ay * By*y2 +
-	Ay * Cy*y2−By*Cy*y2;
-	if (lineIntersect <= 1 || lineIntersect >= 0)
-	{
-	}
-	}*/
-
-	//Create and remove functions for 3D frame
-	void Growth::addVertex(int x, int y, int z)
-	{
-		std::array<int, 3> add{ x, y, z };
+		std::array<double, 3> add{ x, y, z };
 		vertices.push_back(add);
 	}
-	void Growth::addFace(int a, int b, int c)
+	void Obj::addFace(double a, double b, double c)
 	{
-		std::array<int, 3> add{ a, b, c };
+		std::array<double, 3> add{ a, b, c };
 		faces.push_back(add);
 	}
-	void Growth::removeVertex(int x, int y, int z)
+	
+	void Obj::removeVertex(double x, double y, double z)
 	{
-		std::array<int,3> points{ x, y, z };
+		std::array<double,3> points{ x, y, z };
 		vertices.erase(std::remove(vertices.begin(), vertices.end(), points), vertices.end());
 	}
-	void Growth::removeFace(int a, int b, int c)
+	void Obj::removeFace(double a, double b, double c)
 	{
-		std::array<int, 3> points{ a, b, c };
+		std::array<double, 3> points{ a, b, c };
 		faces.erase(std::remove(faces.begin(), faces.end(), points), faces.end());
 	}
-	/*void Growth::moveVertex(int x, int y, int z, int n_x, int n_y, int n_z)
-	{
-	vertices[std::find(vertices.begin, vertices.end, (x, y, z))] = (n_x, n_y, n_z);
-	}*/
 
-	//Print .obj format
-	System::String^ Growth::format()
+	//Get stored variables
+	std::vector<std::array<double, 3> > Obj::getVertices()
+	{	
+		return vertices;
+	}
+	std::vector<std::array<double, 3> > Obj::getFaces()
 	{
-		std::string list;
-		System::String^ simulate = gcnew System::String(list.c_str());
-		for (int i = 0; i < vertices.size(); i++)
-		{
-			simulate += " v " + vertices[i][0] + " " + vertices[i][1] + " " + vertices[i][2] + "\r\n";
-		}
-		for (int i = 0; i < faces.size(); i++)
-		{
-			simulate += "f " + faces[i][0] + " " + faces[i][1] + " " + faces[i][2] + "\r\n";
-		}
-
-		return simulate;
+		return faces;
 	}

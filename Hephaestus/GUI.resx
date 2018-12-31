@@ -117,19 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="PropertiesExit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4yMIYnWQMAAAE7SURBVGhD5dXB
-        bcJAFAZh145yJwWQLkgXpBhXsMkeLDn2gOzd9/YwHD4hjQ3aX7LMVEp5CxiNMBphNMJohNEIoxFGI4xG
-        GI0wGmE0wmiE0QijEUYjjEYYjTAaYTTCaITxrOv1s8zz/E9t2/uOiPytNYwtIg6YNbLC2KrnoJkjK4w9
-        Wg6cPbLC2OvMwUeMrDBGODJg1MgKY5Tb7Ws35HL5+LtUpvq5vVbvX74bDWMkGnu/f+9a5sgKYzR6RNey
-        Htc1jBmejR0xssKY4S2GPhu5GDEWYyR6uz4eP7u2vI2zYIzy6i/k1V9PBowR6HHdPqJH7omCsdeZAaPG
-        YuzRcvARYzG26jlw9liMLSIOmjkW41mRB8wai9EIoxFGI4xGGI0wGmE0wmiE0QijEUYjjEYYjTAaYTTC
-        aITRp0y/wiiwoquXJeAAAAAASUVORK5CYII=
-</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Instructions:
+This program allows you to define a start and and endpoint in three 
+dimensional space. The program can then take the material information 
+and create an object that can withstand the set gravitational force.
+
+You start out by selecting which Material type you wish the object to be or 
+by manually inputting the material density, yield strength, and elasticity. The 
+strain limit variable allows you to select a percentage of the object's yield
+strength to determine how much strain a node can take. After the material 
+selection you can determine how far each vertice will be created from 
+each other by changing the node spacing variable. After that the magnitude
+of the force can be changed in the Gravity variable. Once all of the settings
+are selected you can choose the start point (seed node) and endpoint
+(target node) of where the object will grow. Hit the simulate button and the 
+simulation will apply the desired settings creating the object based around 
+them and then print the vertex data to the screen. The printed text then can
+be copied to a .obj file that can be opened up in a model editor to see the 
+vertices.</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="Logo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAhwAAAIcCAYAAAC9/nd8AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -1374,17 +1382,6 @@
         Htc1jBmejR0xssKY4S2GPhu5GDEWYyR6uz4eP7u2vI2zYIzy6i/k1V9PBowR6HHdPqJH7omCsdeZAaPG
         YuzRcvARYzG26jlw9liMLSIOmjkW41mRB8wai9EIoxFGI4xGGI0wGmE0wmiE0QijEUYjjEYYjTAaYTTC
         aITRp0y/wiiwoquXJeAAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="SizeButtonImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4yMIYnWQMAAAD5SURBVGhD7dax
-        DYNAEAVRqkbOcSu4AlwYFZztgGQ1gfU5S9ZwwQsYIXY3Y2qtXQJGI4xGGI0wGmE0wmiE0QijEUYjjEYY
-        jTAaYTTCaITRCKMRRiOMRhiNMCb2fW+/UOekMCZoyR7qnBTGBC3ZQ52TwpigJXuoc1IYE7RkD3VOCmOC
-        luyhzklhTNCSPdQ5KYyJY7Fte7Z5vp2yro//P3RZ7u9Hfudbn2+MQ0MYE+PQwDj0BIyJcWhgHHoCxsQ4
-        NDAOPQFj4ljsMv+6vdU5KYwJWrKHOieF0QijEUYjjEYYjTAaYTTCaITRCKMRRiOMRhiNMBphNMLo06YX
-        2fr5ykKJ7iQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="MinimizeButtonImage.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

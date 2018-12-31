@@ -1,11 +1,6 @@
 #include "GUI.h"
 #include <iostream>
-#include "Object.h"
-
-//Drag Application Form
-System::Void Hephaestus::GUI::TitleBar_Click(System::Object^ sender, System::EventArgs^ e)
-{
-}
+#include "Generative_Design.h"
 
 //Material Input
 System::Void Hephaestus::GUI::MaterialList_TextChanged(System::Object^  sender, System::EventArgs^  e)
@@ -24,19 +19,11 @@ System::Void Hephaestus::GUI::MaterialList_TextChanged(System::Object^  sender, 
 		Hephaestus::GUI::YieldStrengthInput->Text = L"35.9";
 		Hephaestus::GUI::MaterialList->Text = L"PLA";
 	}
-	else
-	{}
 
 }
 System::Void Hephaestus::GUI::MaterialInput_TextChanged(System::Object^  sender, System::EventArgs^  e)
 {
 	Hephaestus::GUI::MaterialList->ResetText();
-}
-
-//Obstacle File
-System::Void Hephaestus::GUI::ObstacleFileInput_MouseDoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
-{
-
 }
 
 //Simulate Growth
@@ -71,7 +58,10 @@ System::Void Hephaestus::GUI::SimulateButton_Click(System::Object^  sender, Syst
 	}
 }
 
-//Close down the program
+
+//Title Bar
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Close down the program (changes color when hovering over with Hover & Hoveroff functions)
 System::Void Hephaestus::GUI::ExitButtonImage_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	Application::Exit();
@@ -87,35 +77,7 @@ System::Void Hephaestus::GUI::ExitButtonImage_Hoveroff(System::Object^  sender, 
 		static_cast<System::Int32>(static_cast<System::Byte>(48)));
 }
 
-//Restore down or maximize program
-System::Void Hephaestus::GUI::TitleBar_DoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
-{}
-System::Void Hephaestus::GUI::SizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e)
-{
-	switch (Hephaestus::GUI::WindowState)
-	{
-	case System::Windows::Forms::FormWindowState::Maximized:
-		Hephaestus::GUI::WindowState = System::Windows::Forms::FormWindowState::Minimized;
-		//Hephaestus::GUI::Maximize->Image = (cli::safe_cast<System::Drawing::Image^>(System::Resources::ResourceManager::GetObject(L"Restore Down.Image")));
-
-	case System::Windows::Forms::FormWindowState::Minimized:
-		Hephaestus::GUI::WindowState = System::Windows::Forms::FormWindowState::Maximized;
-		//Hephaestus::GUI::Maximize->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Maximize.Image")));
-
-	}
-}
-System::Void Hephaestus::GUI::SizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
-{
-	Hephaestus::GUI::SizeButtonImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
-		static_cast<System::Int32>(static_cast<System::Byte>(65)));
-}
-System::Void Hephaestus::GUI::SizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e)
-{
-	Hephaestus::GUI::SizeButtonImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
-		static_cast<System::Int32>(static_cast<System::Byte>(48)));
-}
-
-//Minimize the program
+//Minimize the program (changes color when hovering over with Hover & Hoveroff functions)
 System::Void Hephaestus::GUI::MinimizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e)
 {
 	Hephaestus::GUI::WindowState = System::Windows::Forms::FormWindowState::Minimized;
@@ -129,4 +91,32 @@ System::Void Hephaestus::GUI::MinimizeButtonImage_Hoveroff(System::Object^  send
 {
 	Hephaestus::GUI::MinimizeButtonImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 		static_cast<System::Int32>(static_cast<System::Byte>(48)));
+}
+
+//Menu Strip
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Help Button (changes color when hovering over with Hover & Hoveroff functions)
+System::Void Hephaestus::GUI::HelpButton_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	Instructions->Visible = true;
+}
+System::Void Hephaestus::GUI::HelpButton_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
+{
+	Hephaestus::GUI::HelpButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
+		static_cast<System::Int32>(static_cast<System::Byte>(65)));
+}
+System::Void Hephaestus::GUI::HelpButton_Hoveroff(System::Object^  sender, System::EventArgs^  e)
+{
+	Hephaestus::GUI::HelpButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
+		static_cast<System::Int32>(static_cast<System::Byte>(48)));
+}
+
+//Close instructions panel
+System::Void Hephaestus::GUI::Instructions_ok_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	Instructions->Visible = false;
+	//Save show again status to config file
+	std::ofstream config(L"Config.cfg");
+	config << "show again = " << !show_again->Checked;
+	config.close();
 }

@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Image Resources">
+      <UniqueIdentifier>{56de8ece-002e-4117-ac56-2b07013564e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Templated">
+      <UniqueIdentifier>{801cac1c-cc7d-4d57-a218-bcf172c98b91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Functions">
+      <UniqueIdentifier>{df28065d-87f0-400a-b12b-0137d08be66d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Classes">
+      <UniqueIdentifier>{db5781bc-adec-49e6-b16b-122464552d2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{8a2896b4-2574-4992-8b40-5f48f98d037b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{91ebdbab-c584-4d82-840e-196003f6c662}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -21,21 +39,52 @@
     <ClCompile Include="GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Generative_Design.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Generative_Design.h">
+      <Filter>Header Files\Classes</Filter>
+    </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GUI.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config.cfg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Exit.png">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
+    <Image Include="Resources\Maximize.png">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
+    <Image Include="Resources\Minimize.png">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
+    <Image Include="Resources\Morph White Icon.png">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
+    <Image Include="Resources\morph_black_icon.ico">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
+    <Image Include="Resources\Restore Down.png">
+      <Filter>Resource Files\Image Resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

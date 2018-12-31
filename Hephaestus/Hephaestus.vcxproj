@@ -90,11 +90,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\boost_1_63_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
       <EntryPointSymbol>Main</EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>D:\boost_1_63_0\stage\lib</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
@@ -136,11 +138,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Generative_Design.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Generative_Design.h" />
     <ClInclude Include="GUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -150,6 +154,17 @@
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Exit.png" />
+    <Image Include="Resources\Maximize.png" />
+    <Image Include="Resources\Minimize.png" />
+    <Image Include="Resources\Morph White Icon.png" />
+    <Image Include="Resources\morph_black_icon.ico" />
+    <Image Include="Resources\Restore Down.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
