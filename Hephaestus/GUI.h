@@ -47,8 +47,8 @@ namespace Hephaestus
 					if (index != std::string::npos) 
 					{
 						std::istringstream(oneLine.substr(index + 1, oneLine.length())) >> std::boolalpha >> show;
-						show_again->Checked = !show;
-						Instructions->Visible = show;
+						InstructionsShowAgainCheckbox->Checked = !show;
+						InstructionsPanel->Visible = show;
 					}
 				}
 			}
@@ -68,82 +68,79 @@ namespace Hephaestus
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Panel^  PropertiesPanel;
-	private: System::Windows::Forms::Panel^  PropertiesBar;
-	protected:
+	private: 
+		System::Windows::Forms::Panel^  PropertiesPanel;
+		System::Windows::Forms::Panel^  PropertiesBar;
+		System::Windows::Forms::Label^  CellPropertiesLabel;
+		System::Windows::Forms::Panel^  ViewerPanel;
+		System::Windows::Forms::PictureBox^  Logo;
+		System::Windows::Forms::Label^  ApplicationLabel;
+		System::Windows::Forms::PictureBox^  ExitButtonImage;
+		System::Windows::Forms::PictureBox^  SizeButtonImage;
+		System::Windows::Forms::PictureBox^  MinimizeButtonImage;
+		System::Windows::Forms::Panel^  TitleBar;
+		System::Windows::Forms::Panel^  ToolMenu;
+		System::Windows::Forms::Label^  ObjectInformationLabel;
+		System::Windows::Forms::Label^  HelpButton;
+		System::Windows::Forms::Label^  FileButton;
+		System::Windows::Forms::Label^  ViewButton;
+		System::Windows::Forms::Panel^  BottomSeperator;
+		System::Windows::Forms::Panel^  LeftSeperator;
+		System::Windows::Forms::Panel^  RightSeperator;
+		System::Windows::Forms::Panel^  PanelSeperator;
+		System::Windows::Forms::Label^  ElasticityLabel;
+		System::Windows::Forms::Label^  YieldStrengthLabel;
+		System::Windows::Forms::Label^  MaterialLabel;
+		System::Windows::Forms::Label^  ShearTensileLabel;
+		System::Windows::Forms::Label^  NodeSpacingLabel;
+		System::Windows::Forms::Label^  StrainLabel;
+		System::Windows::Forms::TrackBar^  ShearTensileSlider;
+		System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+		System::Windows::Forms::TextBox^  YieldStrengthInput;
+		System::Windows::Forms::TextBox^  MaterialElasticityInput;
+		System::Windows::Forms::NumericUpDown^  NodeSpacingInput;
+		System::Windows::Forms::NumericUpDown^  StrainLimitInput;
+		System::Windows::Forms::Label^  GravityLabel;
+		System::Windows::Forms::TextBox^  GravityInput;
+		System::Windows::Forms::DomainUpDown^  MaterialList;
+		System::Windows::Forms::TextBox^  PositionalReadOut;
+		System::Windows::Forms::Button^  SimulateButton;
+		System::Windows::Forms::Label^  ForceObjectsLabel;
+		System::Windows::Forms::Label^  ObstacleObjectsLabel;
+		System::Windows::Forms::Label^  MaterialDensityLabel;
+		System::Windows::Forms::Label^  FillObjectsLabel;
+		System::Windows::Forms::Label^  TargetNodeLabel;
+		System::Windows::Forms::Label^  SeedNodeLabel;
+		System::Windows::Forms::Panel^  PropertiesSeperator2;
+		System::Windows::Forms::Panel^  panel1;
+		System::Windows::Forms::Label^  GrowthScenarioLabel;
+		System::Windows::Forms::Panel^  PropertiesSeperator1;
+		System::Windows::Forms::Panel^  PropertiesSeperator;
+		System::Windows::Forms::Panel^  PropertiesTopSeperator;
+		System::Windows::Forms::Panel^  PropertiesRightSeperator;
+		System::Windows::Forms::Panel^  PropertiesLeftSeperator;
+		System::Windows::Forms::TextBox^  ObstacleFileInput;
+		System::Windows::Forms::TextBox^  MaterialDensityInput;
+		System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+		System::Windows::Forms::Panel^  TargetPanel;
+		System::Windows::Forms::TextBox^  TargetZInput;
+		System::Windows::Forms::Label^  TargetZLabel;
+		System::Windows::Forms::TextBox^  TargetYInput;
+		System::Windows::Forms::Label^  TargetYLabel;
+		System::Windows::Forms::TextBox^  TargetXInput;
+		System::Windows::Forms::Label^  TargetXLabel;
+		System::Windows::Forms::Panel^  SeedPanel;
+		System::Windows::Forms::TextBox^  SeedZInput;
+		System::Windows::Forms::Label^  SeedZLabel;
+		System::Windows::Forms::TextBox^  SeedYInput;
+		System::Windows::Forms::Label^  SeedYLabel;
+		System::Windows::Forms::TextBox^  SeedXInput;
+		System::Windows::Forms::Label^  SeedXLabel;
+		System::Windows::Forms::Panel^  InstructionsPanel;
+		System::Windows::Forms::Button^  InstructionsButton;
+		System::Windows::Forms::Label^  InstructionsLabel;
+		System::Windows::Forms::CheckBox^  InstructionsShowAgainCheckbox;
 
-	protected:
-
-	private: System::Windows::Forms::PictureBox^  PropertiesExit;
-	private: System::Windows::Forms::Label^  CellPropertiesLabel;
-	private: System::Windows::Forms::Panel^  ViewerPanel;
-	private: System::Windows::Forms::PictureBox^  Logo;
-	private: System::Windows::Forms::Label^  ApplicationLabel;
-	private: System::Windows::Forms::PictureBox^  ExitButtonImage;
-	private: System::Windows::Forms::PictureBox^  SizeButtonImage;
-	private: System::Windows::Forms::PictureBox^  MinimizeButtonImage;
-	private: System::Windows::Forms::Panel^  TitleBar;
-	private: System::Windows::Forms::Panel^  ToolMenu;
-	private: System::Windows::Forms::Label^  ObjectInformationLabel;
-	private: System::Windows::Forms::Label^  HelpButton;
-	private: System::Windows::Forms::Label^  FileButton;
-	private: System::Windows::Forms::Label^  ViewButton;
-	private: System::Windows::Forms::Panel^  BottomSeperator;
-	private: System::Windows::Forms::Panel^  LeftSeperator;
-	private: System::Windows::Forms::Panel^  RightSeperator;
-	private: System::Windows::Forms::Panel^  PanelSeperator;
-	private: System::Windows::Forms::Label^  ElasticityLabel;
-	private: System::Windows::Forms::Label^  YieldStrengthLabel;
-	private: System::Windows::Forms::Label^  MaterialLabel;
-	private: System::Windows::Forms::Label^  ShearTensileLabel;
-	private: System::Windows::Forms::Label^  NodeSpacingLabel;
-	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::TrackBar^  ShearTensileSlider;
-	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
-	private: System::Windows::Forms::TextBox^  YieldStrengthInput;
-	private: System::Windows::Forms::TextBox^  MaterialElasticityInput;
-	private: System::Windows::Forms::NumericUpDown^  NodeSpacingInput;
-	private: System::Windows::Forms::NumericUpDown^  StrainLimitInput;
-	private: System::Windows::Forms::Label^  GravityLabel;
-	private: System::Windows::Forms::TextBox^  GravityInput;
-	private: System::Windows::Forms::DomainUpDown^  MaterialList;
-	private: System::Windows::Forms::TextBox^  PositionalReadOut;
-	private: System::Windows::Forms::Button^  SimulateButton;
-	private: System::Windows::Forms::Label^  ForceObjectsLabel;
-	private: System::Windows::Forms::Label^  ObstacleObjectsLabel;
-	private: System::Windows::Forms::Label^  MaterialDensityLabel;
-	private: System::Windows::Forms::Label^  FillObjectsLabel;
-	private: System::Windows::Forms::Label^  TargetNodeLabel;
-	private: System::Windows::Forms::Label^  SeedNodeLabel;
-	private: System::Windows::Forms::Panel^  PropertiesSeperator2;
-	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::Label^  GrowthScenarioLabel;
-	private: System::Windows::Forms::Panel^  PropertiesSeperator1;
-	private: System::Windows::Forms::Panel^  PropertiesSeperator;
-	private: System::Windows::Forms::Panel^  PropertiesTopSeperator;
-	private: System::Windows::Forms::Panel^  PropertiesRightSeperator;
-	private: System::Windows::Forms::Panel^  PropertiesLeftSeperator;
-	private: System::Windows::Forms::TextBox^  ObstacleFileInput;
-	private: System::Windows::Forms::TextBox^  MaterialDensityInput;
-	private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
-	private: System::Windows::Forms::Panel^  TargetPanel;
-	private: System::Windows::Forms::TextBox^  TargetZInput;
-	private: System::Windows::Forms::Label^  TargetZLabel;
-	private: System::Windows::Forms::TextBox^  TargetYInput;
-	private: System::Windows::Forms::Label^  TargetYLabel;
-	private: System::Windows::Forms::TextBox^  TargetXInput;
-	private: System::Windows::Forms::Label^  TargetXLabel;
-	private: System::Windows::Forms::Panel^  SeedPanel;
-	private: System::Windows::Forms::TextBox^  SeedZInput;
-	private: System::Windows::Forms::Label^  SeedZLabel;
-	private: System::Windows::Forms::TextBox^  SeedYInput;
-	private: System::Windows::Forms::Label^  SeedYLabel;
-	private: System::Windows::Forms::TextBox^  SeedXInput;
-	private: System::Windows::Forms::Label^  SeedXLabel;
-
-	protected:
-
-	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -191,7 +188,7 @@ namespace Hephaestus
 			this->ShearTensileSlider = (gcnew System::Windows::Forms::TrackBar());
 			this->ShearTensileLabel = (gcnew System::Windows::Forms::Label());
 			this->StrainLimitInput = (gcnew System::Windows::Forms::NumericUpDown());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->StrainLabel = (gcnew System::Windows::Forms::Label());
 			this->MaterialElasticityInput = (gcnew System::Windows::Forms::TextBox());
 			this->ElasticityLabel = (gcnew System::Windows::Forms::Label());
 			this->YieldStrengthInput = (gcnew System::Windows::Forms::TextBox());
@@ -204,10 +201,13 @@ namespace Hephaestus
 			this->PropertiesRightSeperator = (gcnew System::Windows::Forms::Panel());
 			this->PropertiesTopSeperator = (gcnew System::Windows::Forms::Panel());
 			this->PropertiesBar = (gcnew System::Windows::Forms::Panel());
-			this->PropertiesExit = (gcnew System::Windows::Forms::PictureBox());
 			this->CellPropertiesLabel = (gcnew System::Windows::Forms::Label());
 			this->ViewerPanel = (gcnew System::Windows::Forms::Panel());
 			this->PositionalReadOut = (gcnew System::Windows::Forms::TextBox());
+			this->InstructionsPanel = (gcnew System::Windows::Forms::Panel());
+			this->InstructionsLabel = (gcnew System::Windows::Forms::Label());
+			this->InstructionsButton = (gcnew System::Windows::Forms::Button());
+			this->InstructionsShowAgainCheckbox = (gcnew System::Windows::Forms::CheckBox());
 			this->Logo = (gcnew System::Windows::Forms::PictureBox());
 			this->ApplicationLabel = (gcnew System::Windows::Forms::Label());
 			this->ExitButtonImage = (gcnew System::Windows::Forms::PictureBox());
@@ -233,8 +233,8 @@ namespace Hephaestus
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ShearTensileSlider))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->StrainLimitInput))->BeginInit();
 			this->PropertiesBar->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PropertiesExit))->BeginInit();
 			this->ViewerPanel->SuspendLayout();
+			this->InstructionsPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ExitButtonImage))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SizeButtonImage))->BeginInit();
@@ -270,7 +270,7 @@ namespace Hephaestus
 			this->PropertiesPanel->Controls->Add(this->ShearTensileSlider);
 			this->PropertiesPanel->Controls->Add(this->ShearTensileLabel);
 			this->PropertiesPanel->Controls->Add(this->StrainLimitInput);
-			this->PropertiesPanel->Controls->Add(this->label1);
+			this->PropertiesPanel->Controls->Add(this->StrainLabel);
 			this->PropertiesPanel->Controls->Add(this->MaterialElasticityInput);
 			this->PropertiesPanel->Controls->Add(this->ElasticityLabel);
 			this->PropertiesPanel->Controls->Add(this->YieldStrengthInput);
@@ -326,7 +326,6 @@ namespace Hephaestus
 			this->ObstacleFileInput->TabIndex = 32;
 			this->ObstacleFileInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->ObstacleFileInput->Visible = false;
-			this->ObstacleFileInput->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &GUI::ObstacleFileInput_MouseDoubleClick);
 			// 
 			// ObstacleObjectsLabel
 			// 
@@ -693,16 +692,16 @@ namespace Hephaestus
 			this->StrainLimitInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->StrainLimitInput->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			// 
-			// label1
+			// StrainLabel
 			// 
-			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->label1->ForeColor = System::Drawing::SystemColors::Control;
-			this->label1->Location = System::Drawing::Point(12, 354);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(367, 32);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Strain Limit";
-			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->StrainLabel->Dock = System::Windows::Forms::DockStyle::Top;
+			this->StrainLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->StrainLabel->Location = System::Drawing::Point(12, 354);
+			this->StrainLabel->Name = L"StrainLabel";
+			this->StrainLabel->Size = System::Drawing::Size(367, 32);
+			this->StrainLabel->TabIndex = 4;
+			this->StrainLabel->Text = L"Strain Limit";
+			this->StrainLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// MaterialElasticityInput
 			// 
@@ -837,7 +836,6 @@ namespace Hephaestus
 			this->PropertiesBar->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->PropertiesBar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
-			this->PropertiesBar->Controls->Add(this->PropertiesExit);
 			this->PropertiesBar->Controls->Add(this->CellPropertiesLabel);
 			this->PropertiesBar->Dock = System::Windows::Forms::DockStyle::Top;
 			this->PropertiesBar->ForeColor = System::Drawing::SystemColors::Control;
@@ -845,16 +843,6 @@ namespace Hephaestus
 			this->PropertiesBar->Name = L"PropertiesBar";
 			this->PropertiesBar->Size = System::Drawing::Size(391, 62);
 			this->PropertiesBar->TabIndex = 0;
-			// 
-			// PropertiesExit
-			// 
-			this->PropertiesExit->Location = System::Drawing::Point(375, 2);
-			this->PropertiesExit->Name = L"PropertiesExit";
-			this->PropertiesExit->Size = System::Drawing::Size(58, 58);
-			this->PropertiesExit->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
-			this->PropertiesExit->TabIndex = 1;
-			this->PropertiesExit->TabStop = false;
-			this->PropertiesExit->Visible = false;
 			// 
 			// CellPropertiesLabel
 			// 
@@ -893,6 +881,54 @@ namespace Hephaestus
 			this->PositionalReadOut->ReadOnly = true;
 			this->PositionalReadOut->Size = System::Drawing::Size(1654, 988);
 			this->PositionalReadOut->TabIndex = 0;
+			// 
+			// InstructionsPanel
+			// 
+			this->InstructionsPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->InstructionsPanel->Controls->Add(this->InstructionsLabel);
+			this->InstructionsPanel->Controls->Add(this->InstructionsButton);
+			this->InstructionsPanel->Controls->Add(this->InstructionsShowAgainCheckbox);
+			this->InstructionsPanel->Location = System::Drawing::Point(573, 229);
+			this->InstructionsPanel->Name = L"InstructionsPanel";
+			this->InstructionsPanel->Size = System::Drawing::Size(982, 650);
+			this->InstructionsPanel->TabIndex = 5;
+			// 
+			// InstructionsLabel
+			// 
+			this->InstructionsLabel->AutoSize = true;
+			this->InstructionsLabel->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->InstructionsLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->InstructionsLabel->Location = System::Drawing::Point(0, 0);
+			this->InstructionsLabel->Name = L"InstructionsLabel";
+			this->InstructionsLabel->Size = System::Drawing::Size(975, 576);
+			this->InstructionsLabel->TabIndex = 0;
+			this->InstructionsLabel->Text = resources->GetString(L"InstructionsLabel.Text");
+			// 
+			// InstructionsButton
+			// 
+			this->InstructionsButton->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->InstructionsButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)),
+				static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->InstructionsButton->ForeColor = System::Drawing::SystemColors::Control;
+			this->InstructionsButton->Location = System::Drawing::Point(893, 610);
+			this->InstructionsButton->Name = L"InstructionsButton";
+			this->InstructionsButton->Size = System::Drawing::Size(85, 36);
+			this->InstructionsButton->TabIndex = 2;
+			this->InstructionsButton->Text = L"Ok";
+			this->InstructionsButton->UseVisualStyleBackColor = false;
+			this->InstructionsButton->Click += gcnew System::EventHandler(this, &GUI::InstructionsButton_Click);
+			// 
+			// InstructionsShowAgainCheckbox
+			// 
+			this->InstructionsShowAgainCheckbox->AutoSize = true;
+			this->InstructionsShowAgainCheckbox->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->InstructionsShowAgainCheckbox->ForeColor = System::Drawing::SystemColors::Control;
+			this->InstructionsShowAgainCheckbox->Location = System::Drawing::Point(0, 610);
+			this->InstructionsShowAgainCheckbox->Name = L"InstructionsShowAgainCheckbox";
+			this->InstructionsShowAgainCheckbox->Size = System::Drawing::Size(978, 36);
+			this->InstructionsShowAgainCheckbox->TabIndex = 1;
+			this->InstructionsShowAgainCheckbox->Text = L"Do not show this message again";
+			this->InstructionsShowAgainCheckbox->UseVisualStyleBackColor = true;
 			// 
 			// Logo
 			// 
@@ -936,13 +972,13 @@ namespace Hephaestus
 			// SizeButtonImage
 			// 
 			this->SizeButtonImage->Dock = System::Windows::Forms::DockStyle::Right;
+			this->SizeButtonImage->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"SizeButtonImage.Image")));
 			this->SizeButtonImage->Location = System::Drawing::Point(1958, 0);
 			this->SizeButtonImage->Name = L"SizeButtonImage";
 			this->SizeButtonImage->Size = System::Drawing::Size(85, 62);
 			this->SizeButtonImage->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->SizeButtonImage->TabIndex = 3;
 			this->SizeButtonImage->TabStop = false;
-			this->SizeButtonImage->Visible = false;
 			this->SizeButtonImage->Click += gcnew System::EventHandler(this, &GUI::SizeButtonImage_Click);
 			this->SizeButtonImage->MouseLeave += gcnew System::EventHandler(this, &GUI::SizeButtonImage_Hoveroff);
 			this->SizeButtonImage->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &GUI::SizeButtonImage_Hover);
@@ -975,8 +1011,7 @@ namespace Hephaestus
 			this->TitleBar->Name = L"TitleBar";
 			this->TitleBar->Size = System::Drawing::Size(2128, 62);
 			this->TitleBar->TabIndex = 2;
-			this->TitleBar->Click += gcnew System::EventHandler(this, &GUI::TitleBar_Click);
-			this->TitleBar->MouseDoubleClick += gcnew System::Windows::Forms::MouseEventHandler(this, &GUI::TitleBar_DoubleClick);
+			this->TitleBar->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &GUI::TitleBar_MouseDown);
 			// 
 			// ToolMenu
 			// 
@@ -999,20 +1034,17 @@ namespace Hephaestus
 			this->ViewButton->Size = System::Drawing::Size(77, 32);
 			this->ViewButton->TabIndex = 3;
 			this->ViewButton->Text = L"View";
-			this->ViewButton->Visible = false;
 			// 
 			// ObjectInformationLabel
 			// 
 			this->ObjectInformationLabel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Right));
 			this->ObjectInformationLabel->AutoSize = true;
 			this->ObjectInformationLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->ObjectInformationLabel->Location = System::Drawing::Point(1670, 10);
+			this->ObjectInformationLabel->Location = System::Drawing::Point(1646, 10);
 			this->ObjectInformationLabel->Name = L"ObjectInformationLabel";
-			this->ObjectInformationLabel->Size = System::Drawing::Size(446, 32);
+			this->ObjectInformationLabel->Size = System::Drawing::Size(470, 32);
 			this->ObjectInformationLabel->TabIndex = 2;
-			this->ObjectInformationLabel->Text = L"v1.00 | Nodes:0 | Mem:0M | Object";
-			this->ObjectInformationLabel->Visible = false;
-			this->ObjectInformationLabel->Click += gcnew System::EventHandler(this, &GUI::ObjectInformationLabel_Click);
+			this->ObjectInformationLabel->Text = L"v1.0.0a | Nodes:0 | Mem:0M | Object";
 			// 
 			// HelpButton
 			// 
@@ -1023,7 +1055,9 @@ namespace Hephaestus
 			this->HelpButton->Size = System::Drawing::Size(74, 32);
 			this->HelpButton->TabIndex = 1;
 			this->HelpButton->Text = L"Help";
-			this->HelpButton->Visible = false;
+			this->HelpButton->Click += gcnew System::EventHandler(this, &GUI::HelpButton_Click);
+			this->HelpButton->MouseLeave += gcnew System::EventHandler(this, &GUI::HelpButton_Hoveroff);
+			this->HelpButton->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &GUI::HelpButton_Hover);
 			// 
 			// FileButton
 			// 
@@ -1034,7 +1068,6 @@ namespace Hephaestus
 			this->FileButton->Size = System::Drawing::Size(62, 32);
 			this->FileButton->TabIndex = 0;
 			this->FileButton->Text = L"File";
-			this->FileButton->Visible = false;
 			// 
 			// BottomSeperator
 			// 
@@ -1084,6 +1117,7 @@ namespace Hephaestus
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->ClientSize = System::Drawing::Size(2128, 1116);
+			this->Controls->Add(this->InstructionsPanel);
 			this->Controls->Add(this->ViewerPanel);
 			this->Controls->Add(this->PanelSeperator);
 			this->Controls->Add(this->PropertiesPanel);
@@ -1109,9 +1143,10 @@ namespace Hephaestus
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->StrainLimitInput))->EndInit();
 			this->PropertiesBar->ResumeLayout(false);
 			this->PropertiesBar->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->PropertiesExit))->EndInit();
 			this->ViewerPanel->ResumeLayout(false);
 			this->ViewerPanel->PerformLayout();
+			this->InstructionsPanel->ResumeLayout(false);
+			this->InstructionsPanel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ExitButtonImage))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->SizeButtonImage))->EndInit();
@@ -1124,22 +1159,23 @@ namespace Hephaestus
 
 		}
 #pragma endregion
-	private: System::Void ExitButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void ExitButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void ExitButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void SizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void SizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void SizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void MinimizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void MinimizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void MinimizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void TitleBar_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void TitleBar_DoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void MaterialList_TextChanged(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void MaterialInput_TextChanged(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void ObstacleFileInput_MouseDoubleClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	private: System::Void SimulateButton_Click(System::Object^  sender, System::EventArgs^  e);
-	private: System::Void ObjectInformationLabel_Click(System::Object^  sender, System::EventArgs^  e) {
-	}
+	private: 
+		System::Void ExitButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void ExitButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		System::Void ExitButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
+		System::Void SizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void SizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		System::Void SizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
+		System::Void MinimizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void MinimizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		System::Void MinimizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e);
+		System::Void MaterialList_TextChanged(System::Object^  sender, System::EventArgs^  e);
+		System::Void MaterialInput_TextChanged(System::Object^  sender, System::EventArgs^  e);
+		System::Void SimulateButton_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void HelpButton_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void HelpButton_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
+		System::Void HelpButton_Hoveroff(System::Object^  sender, System::EventArgs^  e);
+		System::Void InstructionsButton_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void TitleBar_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
 	};
 }

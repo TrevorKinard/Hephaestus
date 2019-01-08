@@ -93,12 +93,43 @@ System::Void Hephaestus::GUI::MinimizeButtonImage_Hoveroff(System::Object^  send
 		static_cast<System::Int32>(static_cast<System::Byte>(48)));
 }
 
+//Restore Down - Fullscreen the program (changes color when hovering over with Hover & Hoveroff functions)
+System::Void Hephaestus::GUI::SizeButtonImage_Click(System::Object^  sender, System::EventArgs^  e)
+{
+
+}
+System::Void Hephaestus::GUI::SizeButtonImage_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
+{
+	Hephaestus::GUI::SizeButtonImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
+		static_cast<System::Int32>(static_cast<System::Byte>(65)));
+}
+System::Void Hephaestus::GUI::SizeButtonImage_Hoveroff(System::Object^  sender, System::EventArgs^  e)
+{
+	Hephaestus::GUI::SizeButtonImage->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
+		static_cast<System::Int32>(static_cast<System::Byte>(48)));
+}
+
+//Title Bar drag
+System::Void Hephaestus::GUI::TitleBar_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
+{
+	//restore Down
+	//Set GUI position to mouse position with offset based on mouse position on title bar
+	Point currentScreenPos = PointToScreen(e->Location);
+	Hephaestus::GUI::Location = Point(currentScreenPos.X - e->X, currentScreenPos.Y - e->Y);
+	//Redraw GUI
+}
+
 //Menu Strip
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Help Button (changes color when hovering over with Hover & Hoveroff functions)
 System::Void Hephaestus::GUI::HelpButton_Click(System::Object^  sender, System::EventArgs^  e)
 {
-	Instructions->Visible = true;
+		InstructionsPanel->Visible = !InstructionsPanel->Visible;
+
+		//Save show again status to config file
+		std::ofstream config(L"Config.cfg");
+		config << "show again = " << !InstructionsShowAgainCheckbox->Checked;
+		config.close();
 }
 System::Void Hephaestus::GUI::HelpButton_Hover(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
 {
@@ -112,11 +143,11 @@ System::Void Hephaestus::GUI::HelpButton_Hoveroff(System::Object^  sender, Syste
 }
 
 //Close instructions panel
-System::Void Hephaestus::GUI::Instructions_ok_Click(System::Object^  sender, System::EventArgs^  e)
+System::Void Hephaestus::GUI::InstructionsButton_Click(System::Object^  sender, System::EventArgs^  e)
 {
-	Instructions->Visible = false;
+	InstructionsPanel->Visible = false;
 	//Save show again status to config file
 	std::ofstream config(L"Config.cfg");
-	config << "show again = " << !show_again->Checked;
+	config << "show again = " << !InstructionsShowAgainCheckbox->Checked;
 	config.close();
 }
