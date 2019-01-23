@@ -177,8 +177,15 @@ void Growth::stressAnalysis()
 			//Determine each node's axis' displacement
 			for (int t = 0; t < matrix.size(); ++t)
 			{
-				//Needs proper matrix division
-				displacement[c] += gravity[c] * density / matrix[t];
+				if (generate.getVertices()[i][0] == seed[0] && generate.getVertices()[i][1] == seed[1] && generate.getVertices()[i][2] == seed[2])
+				{
+					displacement[c] = 0;
+				}
+				else 
+				{
+					//Needs proper matrix division
+					displacement[c] += gravity[c] * density / matrix[t];
+				}
 			}
 		}
 		//determine how far the node moved
