@@ -26,6 +26,76 @@ System::Void Hephaestus::GUI::MaterialInput_TextChanged(System::Object^  sender,
 	Hephaestus::GUI::MaterialList->ResetText();
 }
 
+//Object Selection
+System::Void Hephaestus::GUI::ObjectSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e)
+{
+	if (Hephaestus::GUI::treeView_Objects->SelectedNode->Parent == nullptr)
+	{
+		Hephaestus::GUI::label_Density->Visible = true;
+		Hephaestus::GUI::MaterialDensityInput->Visible = true;
+		Hephaestus::GUI::label_Elasticity->Visible = true;
+		Hephaestus::GUI::MaterialElasticityInput->Visible = true;
+		Hephaestus::GUI::label_Yield->Visible = true;
+		Hephaestus::GUI::YieldStrengthInput->Visible = true;
+		Hephaestus::GUI::label_Material->Visible = true;
+		Hephaestus::GUI::MaterialList->Visible = true;
+		Hephaestus::GUI::buttonAddVector->Visible = true;
+
+		Hephaestus::GUI::TargetPanel->Visible = false;
+		Hephaestus::GUI::TargetXLabel->Visible = false;
+		Hephaestus::GUI::TargetXInput->Visible = false;
+		Hephaestus::GUI::TargetYLabel->Visible = false;
+		Hephaestus::GUI::TargetYInput->Visible = false;
+		Hephaestus::GUI::TargetZLabel->Visible = false;
+		Hephaestus::GUI::TargetZInput->Visible = false;
+		Hephaestus::GUI::TargetNodeLabel->Visible = false;
+		Hephaestus::GUI::SeedPanel->Visible = false;
+		Hephaestus::GUI::SeedXLabel->Visible = false;
+		Hephaestus::GUI::SeedXInput->Visible = false;
+		Hephaestus::GUI::SeedYLabel->Visible = false;
+		Hephaestus::GUI::SeedYInput->Visible = false;
+		Hephaestus::GUI::SeedZLabel->Visible = false;
+		Hephaestus::GUI::SeedZInput->Visible = false;
+		Hephaestus::GUI::SeedNodeLabel->Visible = false;
+	}
+	else
+	{
+		Hephaestus::GUI::label_Density->Visible = false;
+		Hephaestus::GUI::MaterialDensityInput->Visible = false;
+		Hephaestus::GUI::label_Elasticity->Visible = false;
+		Hephaestus::GUI::MaterialElasticityInput->Visible = false;
+		Hephaestus::GUI::label_Yield->Visible = false;
+		Hephaestus::GUI::YieldStrengthInput->Visible = false;
+		Hephaestus::GUI::label_Material->Visible = false;
+		Hephaestus::GUI::MaterialList->Visible = false;
+		Hephaestus::GUI::buttonAddVector->Visible = false;
+
+		Hephaestus::GUI::TargetPanel->Visible = true;
+		Hephaestus::GUI::TargetXLabel->Visible = true;
+		Hephaestus::GUI::TargetXInput->Visible = true;
+		Hephaestus::GUI::TargetYLabel->Visible = true;
+		Hephaestus::GUI::TargetYInput->Visible = true;
+		Hephaestus::GUI::TargetZLabel->Visible = true;
+		Hephaestus::GUI::TargetZInput->Visible = true;
+		Hephaestus::GUI::TargetNodeLabel->Visible = true;
+		Hephaestus::GUI::SeedPanel->Visible = true;
+		Hephaestus::GUI::SeedXLabel->Visible = true;
+		Hephaestus::GUI::SeedXInput->Visible = true;
+		Hephaestus::GUI::SeedYLabel->Visible = true;
+		Hephaestus::GUI::SeedYInput->Visible = true;
+		Hephaestus::GUI::SeedZLabel->Visible = true;
+		Hephaestus::GUI::SeedZInput->Visible = true;
+		Hephaestus::GUI::SeedNodeLabel->Visible = true;
+	}
+	return;
+}
+
+//Add Growth Vector
+System::Void Hephaestus::GUI::buttonAddVector_Click(System::Object^  sender, System::EventArgs^  e)
+{
+	Hephaestus::GUI::treeView_Objects->SelectedNode->Nodes->Add(gcnew TreeNode("Vector"));
+}
+
 //Simulate Growth
 System::Void Hephaestus::GUI::SimulateButton_Click(System::Object^  sender, System::EventArgs^  e)
 {
@@ -40,7 +110,7 @@ System::Void Hephaestus::GUI::SimulateButton_Click(System::Object^  sender, Syst
 		Hephaestus::GUI::SeedZInput->Text != "" &&
 		Hephaestus::GUI::TargetXInput->Text != "" &&
 		Hephaestus::GUI::TargetYInput->Text != "" &&
-		Hephaestus::GUI::TargetZInput->Text)
+		Hephaestus::GUI::TargetZInput->Text != "")
 	{
 		int seedVertex[3] = { int::Parse(Hephaestus::GUI::SeedXInput->Text), int::Parse(Hephaestus::GUI::SeedYInput->Text),  int::Parse(Hephaestus::GUI::SeedZInput->Text) };
 		int targetVertex[3] = { int::Parse(Hephaestus::GUI::TargetXInput->Text), int::Parse(Hephaestus::GUI::TargetYInput->Text),  int::Parse(Hephaestus::GUI::TargetZInput->Text) };

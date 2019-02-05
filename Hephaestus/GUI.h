@@ -71,7 +71,8 @@ namespace Hephaestus
 	private: 
 		System::Windows::Forms::Panel^  PropertiesPanel;
 		System::Windows::Forms::Panel^  PropertiesBar;
-		System::Windows::Forms::Label^  CellPropertiesLabel;
+	private: System::Windows::Forms::Label^  GrowthScenarioLabel;
+
 		System::Windows::Forms::Panel^  ViewerPanel;
 		System::Windows::Forms::PictureBox^  Logo;
 		System::Windows::Forms::Label^  ApplicationLabel;
@@ -88,58 +89,109 @@ namespace Hephaestus
 		System::Windows::Forms::Panel^  LeftSeperator;
 		System::Windows::Forms::Panel^  RightSeperator;
 		System::Windows::Forms::Panel^  PanelSeperator;
-		System::Windows::Forms::Label^  ElasticityLabel;
-		System::Windows::Forms::Label^  YieldStrengthLabel;
-		System::Windows::Forms::Label^  MaterialLabel;
+
+
+
 		System::Windows::Forms::Label^  ShearTensileLabel;
 		System::Windows::Forms::Label^  NodeSpacingLabel;
 		System::Windows::Forms::Label^  StrainLabel;
 		System::Windows::Forms::TrackBar^  ShearTensileSlider;
 		System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
-		System::Windows::Forms::TextBox^  YieldStrengthInput;
-		System::Windows::Forms::TextBox^  MaterialElasticityInput;
+
+
 		System::Windows::Forms::NumericUpDown^  NodeSpacingInput;
 		System::Windows::Forms::NumericUpDown^  StrainLimitInput;
 		System::Windows::Forms::Label^  GravityLabel;
 		System::Windows::Forms::TextBox^  GravityInput;
-		System::Windows::Forms::DomainUpDown^  MaterialList;
+
 		System::Windows::Forms::TextBox^  PositionalReadOut;
-		System::Windows::Forms::Button^  SimulateButton;
-		System::Windows::Forms::Label^  ForceObjectsLabel;
-		System::Windows::Forms::Label^  ObstacleObjectsLabel;
-		System::Windows::Forms::Label^  MaterialDensityLabel;
-		System::Windows::Forms::Label^  FillObjectsLabel;
-		System::Windows::Forms::Label^  TargetNodeLabel;
-		System::Windows::Forms::Label^  SeedNodeLabel;
-		System::Windows::Forms::Panel^  PropertiesSeperator2;
-		System::Windows::Forms::Panel^  panel1;
-		System::Windows::Forms::Label^  GrowthScenarioLabel;
-		System::Windows::Forms::Panel^  PropertiesSeperator1;
-		System::Windows::Forms::Panel^  PropertiesSeperator;
+
+
+
+
+
+
+
+
+
+
+
+
 		System::Windows::Forms::Panel^  PropertiesTopSeperator;
 		System::Windows::Forms::Panel^  PropertiesRightSeperator;
 		System::Windows::Forms::Panel^  PropertiesLeftSeperator;
-		System::Windows::Forms::TextBox^  ObstacleFileInput;
-		System::Windows::Forms::TextBox^  MaterialDensityInput;
+
+
 		System::Windows::Forms::OpenFileDialog^  openFileDialog1;
-		System::Windows::Forms::Panel^  TargetPanel;
-		System::Windows::Forms::TextBox^  TargetZInput;
-		System::Windows::Forms::Label^  TargetZLabel;
-		System::Windows::Forms::TextBox^  TargetYInput;
-		System::Windows::Forms::Label^  TargetYLabel;
-		System::Windows::Forms::TextBox^  TargetXInput;
-		System::Windows::Forms::Label^  TargetXLabel;
-		System::Windows::Forms::Panel^  SeedPanel;
-		System::Windows::Forms::TextBox^  SeedZInput;
-		System::Windows::Forms::Label^  SeedZLabel;
-		System::Windows::Forms::TextBox^  SeedYInput;
-		System::Windows::Forms::Label^  SeedYLabel;
-		System::Windows::Forms::TextBox^  SeedXInput;
-		System::Windows::Forms::Label^  SeedXLabel;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		System::Windows::Forms::Panel^  InstructionsPanel;
 		System::Windows::Forms::Button^  InstructionsButton;
 		System::Windows::Forms::Label^  InstructionsLabel;
 		System::Windows::Forms::CheckBox^  InstructionsShowAgainCheckbox;
+		System::Windows::Forms::Panel^  panel_options;
+private: System::Windows::Forms::Button^  buttonAddVector;
+private: System::Windows::Forms::Panel^  panel3;
+private: System::Windows::Forms::TextBox^  MaterialElasticityInput;
+
+private: System::Windows::Forms::Label^  label_Elasticity;
+private: System::Windows::Forms::TextBox^  YieldStrengthInput;
+
+
+
+
+private: System::Windows::Forms::Label^  label_Yield;
+private: System::Windows::Forms::TextBox^  MaterialDensityInput;
+
+
+private: System::Windows::Forms::Label^  label_Density;
+private: System::Windows::Forms::DomainUpDown^  MaterialList;
+
+
+private: System::Windows::Forms::Label^  label_Material;
+
+private: System::Windows::Forms::Panel^  panel4;
+private: System::Windows::Forms::Panel^  panel5;
+private: System::Windows::Forms::Panel^  panel6;
+private: System::Windows::Forms::Panel^  panel2;
+private: System::Windows::Forms::Label^  LabelProperties;
+private: System::Windows::Forms::TreeView^  treeView_Objects;
+
+
+private: System::Windows::Forms::Button^  SimulateButton;
+private: System::Windows::Forms::Panel^  PropertiesSeperator;
+private: System::Windows::Forms::Panel^  TargetPanel;
+
+private: System::Windows::Forms::TextBox^  TargetZInput;
+
+private: System::Windows::Forms::Label^  TargetZLabel;
+
+private: System::Windows::Forms::TextBox^  TargetYInput;
+
+private: System::Windows::Forms::Label^  TargetYLabel;
+private: System::Windows::Forms::TextBox^  TargetXInput;
+private: System::Windows::Forms::Label^  TargetXLabel;
+private: System::Windows::Forms::Label^  TargetNodeLabel;
+private: System::Windows::Forms::Panel^  SeedPanel;
+private: System::Windows::Forms::TextBox^  SeedZInput;
+private: System::Windows::Forms::Label^  SeedZLabel;
+private: System::Windows::Forms::TextBox^  SeedYInput;
+private: System::Windows::Forms::Label^  SeedYLabel;
+private: System::Windows::Forms::TextBox^  SeedXInput;
+private: System::Windows::Forms::Label^  SeedXLabel;
+private: System::Windows::Forms::Label^  SeedNodeLabel;
 
 		/// <summary>
 		/// Required designer variable.
@@ -153,12 +205,29 @@ namespace Hephaestus
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::TreeNode^  treeNode1 = (gcnew System::Windows::Forms::TreeNode(L"Object"));
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(GUI::typeid));
 			this->PropertiesPanel = (gcnew System::Windows::Forms::Panel());
-			this->FillObjectsLabel = (gcnew System::Windows::Forms::Label());
-			this->ForceObjectsLabel = (gcnew System::Windows::Forms::Label());
-			this->ObstacleFileInput = (gcnew System::Windows::Forms::TextBox());
-			this->ObstacleObjectsLabel = (gcnew System::Windows::Forms::Label());
+			this->SimulateButton = (gcnew System::Windows::Forms::Button());
+			this->PropertiesSeperator = (gcnew System::Windows::Forms::Panel());
+			this->GravityInput = (gcnew System::Windows::Forms::TextBox());
+			this->GravityLabel = (gcnew System::Windows::Forms::Label());
+			this->NodeSpacingInput = (gcnew System::Windows::Forms::NumericUpDown());
+			this->NodeSpacingLabel = (gcnew System::Windows::Forms::Label());
+			this->ShearTensileSlider = (gcnew System::Windows::Forms::TrackBar());
+			this->ShearTensileLabel = (gcnew System::Windows::Forms::Label());
+			this->StrainLimitInput = (gcnew System::Windows::Forms::NumericUpDown());
+			this->StrainLabel = (gcnew System::Windows::Forms::Label());
+			this->PropertiesLeftSeperator = (gcnew System::Windows::Forms::Panel());
+			this->PropertiesRightSeperator = (gcnew System::Windows::Forms::Panel());
+			this->PropertiesTopSeperator = (gcnew System::Windows::Forms::Panel());
+			this->PropertiesBar = (gcnew System::Windows::Forms::Panel());
+			this->GrowthScenarioLabel = (gcnew System::Windows::Forms::Label());
+			this->ViewerPanel = (gcnew System::Windows::Forms::Panel());
+			this->PositionalReadOut = (gcnew System::Windows::Forms::TextBox());
+			this->panel_options = (gcnew System::Windows::Forms::Panel());
+			this->buttonAddVector = (gcnew System::Windows::Forms::Button());
+			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->TargetPanel = (gcnew System::Windows::Forms::Panel());
 			this->TargetZInput = (gcnew System::Windows::Forms::TextBox());
 			this->TargetZLabel = (gcnew System::Windows::Forms::Label());
@@ -175,35 +244,20 @@ namespace Hephaestus
 			this->SeedXInput = (gcnew System::Windows::Forms::TextBox());
 			this->SeedXLabel = (gcnew System::Windows::Forms::Label());
 			this->SeedNodeLabel = (gcnew System::Windows::Forms::Label());
-			this->GravityInput = (gcnew System::Windows::Forms::TextBox());
-			this->GravityLabel = (gcnew System::Windows::Forms::Label());
-			this->PropertiesSeperator2 = (gcnew System::Windows::Forms::Panel());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->GrowthScenarioLabel = (gcnew System::Windows::Forms::Label());
-			this->PropertiesSeperator1 = (gcnew System::Windows::Forms::Panel());
-			this->SimulateButton = (gcnew System::Windows::Forms::Button());
-			this->PropertiesSeperator = (gcnew System::Windows::Forms::Panel());
-			this->NodeSpacingInput = (gcnew System::Windows::Forms::NumericUpDown());
-			this->NodeSpacingLabel = (gcnew System::Windows::Forms::Label());
-			this->ShearTensileSlider = (gcnew System::Windows::Forms::TrackBar());
-			this->ShearTensileLabel = (gcnew System::Windows::Forms::Label());
-			this->StrainLimitInput = (gcnew System::Windows::Forms::NumericUpDown());
-			this->StrainLabel = (gcnew System::Windows::Forms::Label());
 			this->MaterialElasticityInput = (gcnew System::Windows::Forms::TextBox());
-			this->ElasticityLabel = (gcnew System::Windows::Forms::Label());
+			this->label_Elasticity = (gcnew System::Windows::Forms::Label());
 			this->YieldStrengthInput = (gcnew System::Windows::Forms::TextBox());
-			this->YieldStrengthLabel = (gcnew System::Windows::Forms::Label());
+			this->label_Yield = (gcnew System::Windows::Forms::Label());
 			this->MaterialDensityInput = (gcnew System::Windows::Forms::TextBox());
-			this->MaterialDensityLabel = (gcnew System::Windows::Forms::Label());
+			this->label_Density = (gcnew System::Windows::Forms::Label());
 			this->MaterialList = (gcnew System::Windows::Forms::DomainUpDown());
-			this->MaterialLabel = (gcnew System::Windows::Forms::Label());
-			this->PropertiesLeftSeperator = (gcnew System::Windows::Forms::Panel());
-			this->PropertiesRightSeperator = (gcnew System::Windows::Forms::Panel());
-			this->PropertiesTopSeperator = (gcnew System::Windows::Forms::Panel());
-			this->PropertiesBar = (gcnew System::Windows::Forms::Panel());
-			this->CellPropertiesLabel = (gcnew System::Windows::Forms::Label());
-			this->ViewerPanel = (gcnew System::Windows::Forms::Panel());
-			this->PositionalReadOut = (gcnew System::Windows::Forms::TextBox());
+			this->label_Material = (gcnew System::Windows::Forms::Label());
+			this->panel4 = (gcnew System::Windows::Forms::Panel());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->LabelProperties = (gcnew System::Windows::Forms::Label());
+			this->treeView_Objects = (gcnew System::Windows::Forms::TreeView());
 			this->InstructionsPanel = (gcnew System::Windows::Forms::Panel());
 			this->InstructionsLabel = (gcnew System::Windows::Forms::Label());
 			this->InstructionsButton = (gcnew System::Windows::Forms::Button());
@@ -226,14 +280,15 @@ namespace Hephaestus
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->PropertiesPanel->SuspendLayout();
-			this->TargetPanel->SuspendLayout();
-			this->SeedPanel->SuspendLayout();
-			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NodeSpacingInput))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ShearTensileSlider))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->StrainLimitInput))->BeginInit();
 			this->PropertiesBar->SuspendLayout();
 			this->ViewerPanel->SuspendLayout();
+			this->panel_options->SuspendLayout();
+			this->TargetPanel->SuspendLayout();
+			this->SeedPanel->SuspendLayout();
+			this->panel2->SuspendLayout();
 			this->InstructionsPanel->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ExitButtonImage))->BeginInit();
@@ -250,35 +305,16 @@ namespace Hephaestus
 			this->PropertiesPanel->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
 				static_cast<System::Int32>(static_cast<System::Byte>(38)));
 			this->PropertiesPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->PropertiesPanel->Controls->Add(this->FillObjectsLabel);
-			this->PropertiesPanel->Controls->Add(this->ForceObjectsLabel);
-			this->PropertiesPanel->Controls->Add(this->ObstacleFileInput);
-			this->PropertiesPanel->Controls->Add(this->ObstacleObjectsLabel);
-			this->PropertiesPanel->Controls->Add(this->TargetPanel);
-			this->PropertiesPanel->Controls->Add(this->TargetNodeLabel);
-			this->PropertiesPanel->Controls->Add(this->SeedPanel);
-			this->PropertiesPanel->Controls->Add(this->SeedNodeLabel);
-			this->PropertiesPanel->Controls->Add(this->GravityInput);
-			this->PropertiesPanel->Controls->Add(this->GravityLabel);
-			this->PropertiesPanel->Controls->Add(this->PropertiesSeperator2);
-			this->PropertiesPanel->Controls->Add(this->panel1);
-			this->PropertiesPanel->Controls->Add(this->PropertiesSeperator1);
 			this->PropertiesPanel->Controls->Add(this->SimulateButton);
 			this->PropertiesPanel->Controls->Add(this->PropertiesSeperator);
+			this->PropertiesPanel->Controls->Add(this->GravityInput);
+			this->PropertiesPanel->Controls->Add(this->GravityLabel);
 			this->PropertiesPanel->Controls->Add(this->NodeSpacingInput);
 			this->PropertiesPanel->Controls->Add(this->NodeSpacingLabel);
 			this->PropertiesPanel->Controls->Add(this->ShearTensileSlider);
 			this->PropertiesPanel->Controls->Add(this->ShearTensileLabel);
 			this->PropertiesPanel->Controls->Add(this->StrainLimitInput);
 			this->PropertiesPanel->Controls->Add(this->StrainLabel);
-			this->PropertiesPanel->Controls->Add(this->MaterialElasticityInput);
-			this->PropertiesPanel->Controls->Add(this->ElasticityLabel);
-			this->PropertiesPanel->Controls->Add(this->YieldStrengthInput);
-			this->PropertiesPanel->Controls->Add(this->YieldStrengthLabel);
-			this->PropertiesPanel->Controls->Add(this->MaterialDensityInput);
-			this->PropertiesPanel->Controls->Add(this->MaterialDensityLabel);
-			this->PropertiesPanel->Controls->Add(this->MaterialList);
-			this->PropertiesPanel->Controls->Add(this->MaterialLabel);
 			this->PropertiesPanel->Controls->Add(this->PropertiesLeftSeperator);
 			this->PropertiesPanel->Controls->Add(this->PropertiesRightSeperator);
 			this->PropertiesPanel->Controls->Add(this->PropertiesTopSeperator);
@@ -289,257 +325,27 @@ namespace Hephaestus
 			this->PropertiesPanel->Size = System::Drawing::Size(436, 990);
 			this->PropertiesPanel->TabIndex = 1;
 			// 
-			// FillObjectsLabel
+			// SimulateButton
 			// 
-			this->FillObjectsLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->FillObjectsLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->FillObjectsLabel->Location = System::Drawing::Point(12, 1036);
-			this->FillObjectsLabel->Name = L"FillObjectsLabel";
-			this->FillObjectsLabel->Size = System::Drawing::Size(367, 32);
-			this->FillObjectsLabel->TabIndex = 27;
-			this->FillObjectsLabel->Text = L"Fill Objects";
-			this->FillObjectsLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			this->FillObjectsLabel->Visible = false;
+			this->SimulateButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
+				static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->SimulateButton->Dock = System::Windows::Forms::DockStyle::Top;
+			this->SimulateButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->SimulateButton->ForeColor = System::Drawing::SystemColors::Control;
+			this->SimulateButton->Location = System::Drawing::Point(12, 385);
+			this->SimulateButton->Name = L"SimulateButton";
+			this->SimulateButton->Size = System::Drawing::Size(410, 43);
+			this->SimulateButton->TabIndex = 36;
+			this->SimulateButton->Text = L"Simulate";
+			this->SimulateButton->UseVisualStyleBackColor = false;
 			// 
-			// ForceObjectsLabel
+			// PropertiesSeperator
 			// 
-			this->ForceObjectsLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->ForceObjectsLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->ForceObjectsLabel->Location = System::Drawing::Point(12, 1004);
-			this->ForceObjectsLabel->Name = L"ForceObjectsLabel";
-			this->ForceObjectsLabel->Size = System::Drawing::Size(367, 32);
-			this->ForceObjectsLabel->TabIndex = 30;
-			this->ForceObjectsLabel->Text = L"Force Objects";
-			this->ForceObjectsLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			this->ForceObjectsLabel->Visible = false;
-			// 
-			// ObstacleFileInput
-			// 
-			this->ObstacleFileInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->ObstacleFileInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->ObstacleFileInput->Dock = System::Windows::Forms::DockStyle::Top;
-			this->ObstacleFileInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->ObstacleFileInput->Location = System::Drawing::Point(12, 966);
-			this->ObstacleFileInput->Name = L"ObstacleFileInput";
-			this->ObstacleFileInput->Size = System::Drawing::Size(367, 38);
-			this->ObstacleFileInput->TabIndex = 32;
-			this->ObstacleFileInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->ObstacleFileInput->Visible = false;
-			// 
-			// ObstacleObjectsLabel
-			// 
-			this->ObstacleObjectsLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->ObstacleObjectsLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->ObstacleObjectsLabel->Location = System::Drawing::Point(12, 934);
-			this->ObstacleObjectsLabel->Name = L"ObstacleObjectsLabel";
-			this->ObstacleObjectsLabel->Size = System::Drawing::Size(367, 32);
-			this->ObstacleObjectsLabel->TabIndex = 26;
-			this->ObstacleObjectsLabel->Text = L"Obstacle Objects";
-			this->ObstacleObjectsLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			this->ObstacleObjectsLabel->Visible = false;
-			// 
-			// TargetPanel
-			// 
-			this->TargetPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TargetPanel->Controls->Add(this->TargetZInput);
-			this->TargetPanel->Controls->Add(this->TargetZLabel);
-			this->TargetPanel->Controls->Add(this->TargetYInput);
-			this->TargetPanel->Controls->Add(this->TargetYLabel);
-			this->TargetPanel->Controls->Add(this->TargetXInput);
-			this->TargetPanel->Controls->Add(this->TargetXLabel);
-			this->TargetPanel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->TargetPanel->Location = System::Drawing::Point(12, 896);
-			this->TargetPanel->Name = L"TargetPanel";
-			this->TargetPanel->Size = System::Drawing::Size(367, 38);
-			this->TargetPanel->TabIndex = 35;
-			// 
-			// TargetZInput
-			// 
-			this->TargetZInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->TargetZInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TargetZInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetZInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetZInput->Location = System::Drawing::Point(284, 0);
-			this->TargetZInput->Name = L"TargetZInput";
-			this->TargetZInput->Size = System::Drawing::Size(80, 38);
-			this->TargetZInput->TabIndex = 11;
-			this->TargetZInput->Text = L"8";
-			this->TargetZInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// TargetZLabel
-			// 
-			this->TargetZLabel->AutoSize = true;
-			this->TargetZLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetZLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetZLabel->Location = System::Drawing::Point(244, 0);
-			this->TargetZLabel->Name = L"TargetZLabel";
-			this->TargetZLabel->Size = System::Drawing::Size(40, 32);
-			this->TargetZLabel->TabIndex = 8;
-			this->TargetZLabel->Text = L"Z:";
-			// 
-			// TargetYInput
-			// 
-			this->TargetYInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->TargetYInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TargetYInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetYInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetYInput->Location = System::Drawing::Point(164, 0);
-			this->TargetYInput->Name = L"TargetYInput";
-			this->TargetYInput->Size = System::Drawing::Size(80, 38);
-			this->TargetYInput->TabIndex = 10;
-			this->TargetYInput->Text = L"0";
-			this->TargetYInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// TargetYLabel
-			// 
-			this->TargetYLabel->AutoSize = true;
-			this->TargetYLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetYLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetYLabel->Location = System::Drawing::Point(122, 0);
-			this->TargetYLabel->Name = L"TargetYLabel";
-			this->TargetYLabel->Size = System::Drawing::Size(42, 32);
-			this->TargetYLabel->TabIndex = 7;
-			this->TargetYLabel->Text = L"Y:";
-			// 
-			// TargetXInput
-			// 
-			this->TargetXInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->TargetXInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->TargetXInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetXInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetXInput->Location = System::Drawing::Point(42, 0);
-			this->TargetXInput->Name = L"TargetXInput";
-			this->TargetXInput->Size = System::Drawing::Size(80, 38);
-			this->TargetXInput->TabIndex = 9;
-			this->TargetXInput->Text = L"0";
-			this->TargetXInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// TargetXLabel
-			// 
-			this->TargetXLabel->AutoSize = true;
-			this->TargetXLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->TargetXLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetXLabel->Location = System::Drawing::Point(0, 0);
-			this->TargetXLabel->Name = L"TargetXLabel";
-			this->TargetXLabel->Size = System::Drawing::Size(42, 32);
-			this->TargetXLabel->TabIndex = 6;
-			this->TargetXLabel->Text = L"X:";
-			// 
-			// TargetNodeLabel
-			// 
-			this->TargetNodeLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->TargetNodeLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->TargetNodeLabel->Location = System::Drawing::Point(12, 864);
-			this->TargetNodeLabel->Name = L"TargetNodeLabel";
-			this->TargetNodeLabel->Size = System::Drawing::Size(367, 32);
-			this->TargetNodeLabel->TabIndex = 25;
-			this->TargetNodeLabel->Text = L"Target Node";
-			this->TargetNodeLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// SeedPanel
-			// 
-			this->SeedPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->SeedPanel->Controls->Add(this->SeedZInput);
-			this->SeedPanel->Controls->Add(this->SeedZLabel);
-			this->SeedPanel->Controls->Add(this->SeedYInput);
-			this->SeedPanel->Controls->Add(this->SeedYLabel);
-			this->SeedPanel->Controls->Add(this->SeedXInput);
-			this->SeedPanel->Controls->Add(this->SeedXLabel);
-			this->SeedPanel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->SeedPanel->Location = System::Drawing::Point(12, 826);
-			this->SeedPanel->Name = L"SeedPanel";
-			this->SeedPanel->Size = System::Drawing::Size(367, 38);
-			this->SeedPanel->TabIndex = 34;
-			// 
-			// SeedZInput
-			// 
-			this->SeedZInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->SeedZInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->SeedZInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedZInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedZInput->Location = System::Drawing::Point(284, 0);
-			this->SeedZInput->Name = L"SeedZInput";
-			this->SeedZInput->Size = System::Drawing::Size(80, 38);
-			this->SeedZInput->TabIndex = 5;
-			this->SeedZInput->Text = L"0";
-			this->SeedZInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// SeedZLabel
-			// 
-			this->SeedZLabel->AutoSize = true;
-			this->SeedZLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedZLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedZLabel->Location = System::Drawing::Point(244, 0);
-			this->SeedZLabel->Name = L"SeedZLabel";
-			this->SeedZLabel->Size = System::Drawing::Size(40, 32);
-			this->SeedZLabel->TabIndex = 2;
-			this->SeedZLabel->Text = L"Z:";
-			// 
-			// SeedYInput
-			// 
-			this->SeedYInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->SeedYInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->SeedYInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedYInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedYInput->Location = System::Drawing::Point(164, 0);
-			this->SeedYInput->Name = L"SeedYInput";
-			this->SeedYInput->Size = System::Drawing::Size(80, 38);
-			this->SeedYInput->TabIndex = 4;
-			this->SeedYInput->Text = L"0";
-			this->SeedYInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// SeedYLabel
-			// 
-			this->SeedYLabel->AutoSize = true;
-			this->SeedYLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedYLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedYLabel->Location = System::Drawing::Point(122, 0);
-			this->SeedYLabel->Name = L"SeedYLabel";
-			this->SeedYLabel->Size = System::Drawing::Size(42, 32);
-			this->SeedYLabel->TabIndex = 1;
-			this->SeedYLabel->Text = L"Y:";
-			// 
-			// SeedXInput
-			// 
-			this->SeedXInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->SeedXInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->SeedXInput->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedXInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedXInput->Location = System::Drawing::Point(42, 0);
-			this->SeedXInput->Name = L"SeedXInput";
-			this->SeedXInput->Size = System::Drawing::Size(80, 38);
-			this->SeedXInput->TabIndex = 3;
-			this->SeedXInput->Text = L"0";
-			this->SeedXInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			// 
-			// SeedXLabel
-			// 
-			this->SeedXLabel->AutoSize = true;
-			this->SeedXLabel->Dock = System::Windows::Forms::DockStyle::Left;
-			this->SeedXLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedXLabel->Location = System::Drawing::Point(0, 0);
-			this->SeedXLabel->Name = L"SeedXLabel";
-			this->SeedXLabel->Size = System::Drawing::Size(42, 32);
-			this->SeedXLabel->TabIndex = 0;
-			this->SeedXLabel->Text = L"X:";
-			// 
-			// SeedNodeLabel
-			// 
-			this->SeedNodeLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->SeedNodeLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->SeedNodeLabel->Location = System::Drawing::Point(12, 794);
-			this->SeedNodeLabel->Name = L"SeedNodeLabel";
-			this->SeedNodeLabel->Size = System::Drawing::Size(367, 32);
-			this->SeedNodeLabel->TabIndex = 24;
-			this->SeedNodeLabel->Text = L"Seed Node";
-			this->SeedNodeLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->PropertiesSeperator->Dock = System::Windows::Forms::DockStyle::Top;
+			this->PropertiesSeperator->Location = System::Drawing::Point(12, 373);
+			this->PropertiesSeperator->Name = L"PropertiesSeperator";
+			this->PropertiesSeperator->Size = System::Drawing::Size(410, 12);
+			this->PropertiesSeperator->TabIndex = 37;
 			// 
 			// GravityInput
 			// 
@@ -548,9 +354,9 @@ namespace Hephaestus
 			this->GravityInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->GravityInput->Dock = System::Windows::Forms::DockStyle::Top;
 			this->GravityInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->GravityInput->Location = System::Drawing::Point(12, 756);
+			this->GravityInput->Location = System::Drawing::Point(12, 335);
 			this->GravityInput->Name = L"GravityInput";
-			this->GravityInput->Size = System::Drawing::Size(367, 38);
+			this->GravityInput->Size = System::Drawing::Size(410, 38);
 			this->GravityInput->TabIndex = 13;
 			this->GravityInput->Text = L"9.82";
 			this->GravityInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -559,72 +365,12 @@ namespace Hephaestus
 			// 
 			this->GravityLabel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->GravityLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->GravityLabel->Location = System::Drawing::Point(12, 724);
+			this->GravityLabel->Location = System::Drawing::Point(12, 303);
 			this->GravityLabel->Name = L"GravityLabel";
-			this->GravityLabel->Size = System::Drawing::Size(367, 32);
+			this->GravityLabel->Size = System::Drawing::Size(410, 32);
 			this->GravityLabel->TabIndex = 14;
 			this->GravityLabel->Text = L"Gravity (m/s^2)";
 			this->GravityLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// PropertiesSeperator2
-			// 
-			this->PropertiesSeperator2->Dock = System::Windows::Forms::DockStyle::Top;
-			this->PropertiesSeperator2->Location = System::Drawing::Point(12, 712);
-			this->PropertiesSeperator2->Name = L"PropertiesSeperator2";
-			this->PropertiesSeperator2->Size = System::Drawing::Size(367, 12);
-			this->PropertiesSeperator2->TabIndex = 23;
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
-				static_cast<System::Int32>(static_cast<System::Byte>(48)));
-			this->panel1->Controls->Add(this->GrowthScenarioLabel);
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel1->Location = System::Drawing::Point(12, 650);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(367, 62);
-			this->panel1->TabIndex = 17;
-			// 
-			// GrowthScenarioLabel
-			// 
-			this->GrowthScenarioLabel->AutoSize = true;
-			this->GrowthScenarioLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->GrowthScenarioLabel->Location = System::Drawing::Point(3, 15);
-			this->GrowthScenarioLabel->Name = L"GrowthScenarioLabel";
-			this->GrowthScenarioLabel->Size = System::Drawing::Size(226, 32);
-			this->GrowthScenarioLabel->TabIndex = 0;
-			this->GrowthScenarioLabel->Text = L"Growth Scenario";
-			// 
-			// PropertiesSeperator1
-			// 
-			this->PropertiesSeperator1->Dock = System::Windows::Forms::DockStyle::Top;
-			this->PropertiesSeperator1->Location = System::Drawing::Point(12, 638);
-			this->PropertiesSeperator1->Name = L"PropertiesSeperator1";
-			this->PropertiesSeperator1->Size = System::Drawing::Size(367, 12);
-			this->PropertiesSeperator1->TabIndex = 22;
-			// 
-			// SimulateButton
-			// 
-			this->SimulateButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
-				static_cast<System::Int32>(static_cast<System::Byte>(70)));
-			this->SimulateButton->Dock = System::Windows::Forms::DockStyle::Top;
-			this->SimulateButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->SimulateButton->ForeColor = System::Drawing::SystemColors::Control;
-			this->SimulateButton->Location = System::Drawing::Point(12, 595);
-			this->SimulateButton->Name = L"SimulateButton";
-			this->SimulateButton->Size = System::Drawing::Size(367, 43);
-			this->SimulateButton->TabIndex = 16;
-			this->SimulateButton->Text = L"Simulate";
-			this->SimulateButton->UseVisualStyleBackColor = false;
-			this->SimulateButton->Click += gcnew System::EventHandler(this, &GUI::SimulateButton_Click);
-			// 
-			// PropertiesSeperator
-			// 
-			this->PropertiesSeperator->Dock = System::Windows::Forms::DockStyle::Top;
-			this->PropertiesSeperator->Location = System::Drawing::Point(12, 583);
-			this->PropertiesSeperator->Name = L"PropertiesSeperator";
-			this->PropertiesSeperator->Size = System::Drawing::Size(367, 12);
-			this->PropertiesSeperator->TabIndex = 21;
 			// 
 			// NodeSpacingInput
 			// 
@@ -633,10 +379,10 @@ namespace Hephaestus
 			this->NodeSpacingInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->NodeSpacingInput->Dock = System::Windows::Forms::DockStyle::Top;
 			this->NodeSpacingInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->NodeSpacingInput->Location = System::Drawing::Point(12, 545);
+			this->NodeSpacingInput->Location = System::Drawing::Point(12, 265);
 			this->NodeSpacingInput->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			this->NodeSpacingInput->Name = L"NodeSpacingInput";
-			this->NodeSpacingInput->Size = System::Drawing::Size(367, 38);
+			this->NodeSpacingInput->Size = System::Drawing::Size(410, 38);
 			this->NodeSpacingInput->TabIndex = 9;
 			this->NodeSpacingInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->NodeSpacingInput->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
@@ -645,9 +391,9 @@ namespace Hephaestus
 			// 
 			this->NodeSpacingLabel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->NodeSpacingLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->NodeSpacingLabel->Location = System::Drawing::Point(12, 513);
+			this->NodeSpacingLabel->Location = System::Drawing::Point(12, 233);
 			this->NodeSpacingLabel->Name = L"NodeSpacingLabel";
-			this->NodeSpacingLabel->Size = System::Drawing::Size(367, 32);
+			this->NodeSpacingLabel->Size = System::Drawing::Size(410, 32);
 			this->NodeSpacingLabel->TabIndex = 5;
 			this->NodeSpacingLabel->Text = L"Node Spacing (* .1mm)";
 			this->NodeSpacingLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -656,10 +402,10 @@ namespace Hephaestus
 			// 
 			this->ShearTensileSlider->AutoSize = false;
 			this->ShearTensileSlider->Dock = System::Windows::Forms::DockStyle::Top;
-			this->ShearTensileSlider->Location = System::Drawing::Point(12, 456);
+			this->ShearTensileSlider->Location = System::Drawing::Point(12, 176);
 			this->ShearTensileSlider->Maximum = 100;
 			this->ShearTensileSlider->Name = L"ShearTensileSlider";
-			this->ShearTensileSlider->Size = System::Drawing::Size(367, 57);
+			this->ShearTensileSlider->Size = System::Drawing::Size(410, 57);
 			this->ShearTensileSlider->TabIndex = 7;
 			this->ShearTensileSlider->TickStyle = System::Windows::Forms::TickStyle::None;
 			this->ShearTensileSlider->Value = 50;
@@ -669,9 +415,9 @@ namespace Hephaestus
 			// 
 			this->ShearTensileLabel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->ShearTensileLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->ShearTensileLabel->Location = System::Drawing::Point(12, 424);
+			this->ShearTensileLabel->Location = System::Drawing::Point(12, 144);
 			this->ShearTensileLabel->Name = L"ShearTensileLabel";
-			this->ShearTensileLabel->Size = System::Drawing::Size(367, 32);
+			this->ShearTensileLabel->Size = System::Drawing::Size(410, 32);
 			this->ShearTensileLabel->TabIndex = 6;
 			this->ShearTensileLabel->Text = L"Shear / Tensile";
 			this->ShearTensileLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -684,10 +430,10 @@ namespace Hephaestus
 			this->StrainLimitInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->StrainLimitInput->Dock = System::Windows::Forms::DockStyle::Top;
 			this->StrainLimitInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->StrainLimitInput->Location = System::Drawing::Point(12, 386);
+			this->StrainLimitInput->Location = System::Drawing::Point(12, 106);
 			this->StrainLimitInput->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			this->StrainLimitInput->Name = L"StrainLimitInput";
-			this->StrainLimitInput->Size = System::Drawing::Size(367, 38);
+			this->StrainLimitInput->Size = System::Drawing::Size(410, 38);
 			this->StrainLimitInput->TabIndex = 8;
 			this->StrainLimitInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->StrainLimitInput->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
@@ -696,131 +442,27 @@ namespace Hephaestus
 			// 
 			this->StrainLabel->Dock = System::Windows::Forms::DockStyle::Top;
 			this->StrainLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->StrainLabel->Location = System::Drawing::Point(12, 354);
+			this->StrainLabel->Location = System::Drawing::Point(12, 74);
 			this->StrainLabel->Name = L"StrainLabel";
-			this->StrainLabel->Size = System::Drawing::Size(367, 32);
+			this->StrainLabel->Size = System::Drawing::Size(410, 32);
 			this->StrainLabel->TabIndex = 4;
 			this->StrainLabel->Text = L"Strain Limit";
 			this->StrainLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// MaterialElasticityInput
-			// 
-			this->MaterialElasticityInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->MaterialElasticityInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->MaterialElasticityInput->Dock = System::Windows::Forms::DockStyle::Top;
-			this->MaterialElasticityInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->MaterialElasticityInput->Location = System::Drawing::Point(12, 316);
-			this->MaterialElasticityInput->Name = L"MaterialElasticityInput";
-			this->MaterialElasticityInput->Size = System::Drawing::Size(367, 38);
-			this->MaterialElasticityInput->TabIndex = 10;
-			this->MaterialElasticityInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->MaterialElasticityInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
-			// 
-			// ElasticityLabel
-			// 
-			this->ElasticityLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->ElasticityLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->ElasticityLabel->Location = System::Drawing::Point(12, 284);
-			this->ElasticityLabel->Name = L"ElasticityLabel";
-			this->ElasticityLabel->Size = System::Drawing::Size(367, 32);
-			this->ElasticityLabel->TabIndex = 2;
-			this->ElasticityLabel->Text = L"Material Elasticity";
-			this->ElasticityLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// YieldStrengthInput
-			// 
-			this->YieldStrengthInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->YieldStrengthInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->YieldStrengthInput->Dock = System::Windows::Forms::DockStyle::Top;
-			this->YieldStrengthInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->YieldStrengthInput->Location = System::Drawing::Point(12, 246);
-			this->YieldStrengthInput->Name = L"YieldStrengthInput";
-			this->YieldStrengthInput->Size = System::Drawing::Size(367, 38);
-			this->YieldStrengthInput->TabIndex = 12;
-			this->YieldStrengthInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->YieldStrengthInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
-			// 
-			// YieldStrengthLabel
-			// 
-			this->YieldStrengthLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->YieldStrengthLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->YieldStrengthLabel->Location = System::Drawing::Point(12, 214);
-			this->YieldStrengthLabel->Name = L"YieldStrengthLabel";
-			this->YieldStrengthLabel->Size = System::Drawing::Size(367, 32);
-			this->YieldStrengthLabel->TabIndex = 1;
-			this->YieldStrengthLabel->Text = L"Material Yield Strength";
-			this->YieldStrengthLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// MaterialDensityInput
-			// 
-			this->MaterialDensityInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->MaterialDensityInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->MaterialDensityInput->Dock = System::Windows::Forms::DockStyle::Top;
-			this->MaterialDensityInput->ForeColor = System::Drawing::SystemColors::Control;
-			this->MaterialDensityInput->Location = System::Drawing::Point(12, 176);
-			this->MaterialDensityInput->Name = L"MaterialDensityInput";
-			this->MaterialDensityInput->Size = System::Drawing::Size(367, 38);
-			this->MaterialDensityInput->TabIndex = 33;
-			this->MaterialDensityInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->MaterialDensityInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
-			// 
-			// MaterialDensityLabel
-			// 
-			this->MaterialDensityLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->MaterialDensityLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->MaterialDensityLabel->Location = System::Drawing::Point(12, 144);
-			this->MaterialDensityLabel->Name = L"MaterialDensityLabel";
-			this->MaterialDensityLabel->Size = System::Drawing::Size(367, 32);
-			this->MaterialDensityLabel->TabIndex = 28;
-			this->MaterialDensityLabel->Text = L"Material Density";
-			this->MaterialDensityLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
-			// 
-			// MaterialList
-			// 
-			this->MaterialList->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
-				static_cast<System::Int32>(static_cast<System::Byte>(38)));
-			this->MaterialList->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->MaterialList->Dock = System::Windows::Forms::DockStyle::Top;
-			this->MaterialList->ForeColor = System::Drawing::SystemColors::Control;
-			this->MaterialList->Items->Add(L"");
-			this->MaterialList->Items->Add(L"ABS");
-			this->MaterialList->Items->Add(L"PLA");
-			this->MaterialList->Location = System::Drawing::Point(12, 106);
-			this->MaterialList->Name = L"MaterialList";
-			this->MaterialList->ReadOnly = true;
-			this->MaterialList->Size = System::Drawing::Size(367, 38);
-			this->MaterialList->TabIndex = 15;
-			this->MaterialList->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
-			this->MaterialList->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialList_TextChanged);
-			// 
-			// MaterialLabel
-			// 
-			this->MaterialLabel->Dock = System::Windows::Forms::DockStyle::Top;
-			this->MaterialLabel->ForeColor = System::Drawing::SystemColors::Control;
-			this->MaterialLabel->Location = System::Drawing::Point(12, 74);
-			this->MaterialLabel->Name = L"MaterialLabel";
-			this->MaterialLabel->Size = System::Drawing::Size(367, 32);
-			this->MaterialLabel->TabIndex = 3;
-			this->MaterialLabel->Text = L"Material";
-			this->MaterialLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			// 
 			// PropertiesLeftSeperator
 			// 
 			this->PropertiesLeftSeperator->Dock = System::Windows::Forms::DockStyle::Left;
 			this->PropertiesLeftSeperator->Location = System::Drawing::Point(0, 74);
 			this->PropertiesLeftSeperator->Name = L"PropertiesLeftSeperator";
-			this->PropertiesLeftSeperator->Size = System::Drawing::Size(12, 994);
+			this->PropertiesLeftSeperator->Size = System::Drawing::Size(12, 914);
 			this->PropertiesLeftSeperator->TabIndex = 19;
 			// 
 			// PropertiesRightSeperator
 			// 
 			this->PropertiesRightSeperator->Dock = System::Windows::Forms::DockStyle::Right;
-			this->PropertiesRightSeperator->Location = System::Drawing::Point(379, 74);
+			this->PropertiesRightSeperator->Location = System::Drawing::Point(422, 74);
 			this->PropertiesRightSeperator->Name = L"PropertiesRightSeperator";
-			this->PropertiesRightSeperator->Size = System::Drawing::Size(12, 994);
+			this->PropertiesRightSeperator->Size = System::Drawing::Size(12, 914);
 			this->PropertiesRightSeperator->TabIndex = 20;
 			// 
 			// PropertiesTopSeperator
@@ -828,7 +470,7 @@ namespace Hephaestus
 			this->PropertiesTopSeperator->Dock = System::Windows::Forms::DockStyle::Top;
 			this->PropertiesTopSeperator->Location = System::Drawing::Point(0, 62);
 			this->PropertiesTopSeperator->Name = L"PropertiesTopSeperator";
-			this->PropertiesTopSeperator->Size = System::Drawing::Size(391, 12);
+			this->PropertiesTopSeperator->Size = System::Drawing::Size(434, 12);
 			this->PropertiesTopSeperator->TabIndex = 18;
 			// 
 			// PropertiesBar
@@ -836,23 +478,23 @@ namespace Hephaestus
 			this->PropertiesBar->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->PropertiesBar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
-			this->PropertiesBar->Controls->Add(this->CellPropertiesLabel);
+			this->PropertiesBar->Controls->Add(this->GrowthScenarioLabel);
 			this->PropertiesBar->Dock = System::Windows::Forms::DockStyle::Top;
 			this->PropertiesBar->ForeColor = System::Drawing::SystemColors::Control;
 			this->PropertiesBar->Location = System::Drawing::Point(0, 0);
 			this->PropertiesBar->Name = L"PropertiesBar";
-			this->PropertiesBar->Size = System::Drawing::Size(391, 62);
+			this->PropertiesBar->Size = System::Drawing::Size(434, 62);
 			this->PropertiesBar->TabIndex = 0;
 			// 
-			// CellPropertiesLabel
+			// GrowthScenarioLabel
 			// 
-			this->CellPropertiesLabel->AutoSize = true;
-			this->CellPropertiesLabel->BackColor = System::Drawing::Color::Transparent;
-			this->CellPropertiesLabel->Location = System::Drawing::Point(3, 15);
-			this->CellPropertiesLabel->Name = L"CellPropertiesLabel";
-			this->CellPropertiesLabel->Size = System::Drawing::Size(220, 32);
-			this->CellPropertiesLabel->TabIndex = 0;
-			this->CellPropertiesLabel->Text = L"Node Properties";
+			this->GrowthScenarioLabel->AutoSize = true;
+			this->GrowthScenarioLabel->BackColor = System::Drawing::Color::Transparent;
+			this->GrowthScenarioLabel->Location = System::Drawing::Point(3, 15);
+			this->GrowthScenarioLabel->Name = L"GrowthScenarioLabel";
+			this->GrowthScenarioLabel->Size = System::Drawing::Size(226, 32);
+			this->GrowthScenarioLabel->TabIndex = 0;
+			this->GrowthScenarioLabel->Text = L"Growth Scenario";
 			// 
 			// ViewerPanel
 			// 
@@ -881,6 +523,443 @@ namespace Hephaestus
 			this->PositionalReadOut->ReadOnly = true;
 			this->PositionalReadOut->Size = System::Drawing::Size(1654, 988);
 			this->PositionalReadOut->TabIndex = 0;
+			// 
+			// panel_options
+			// 
+			this->panel_options->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->panel_options->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->panel_options->Controls->Add(this->buttonAddVector);
+			this->panel_options->Controls->Add(this->panel3);
+			this->panel_options->Controls->Add(this->TargetPanel);
+			this->panel_options->Controls->Add(this->TargetNodeLabel);
+			this->panel_options->Controls->Add(this->SeedPanel);
+			this->panel_options->Controls->Add(this->SeedNodeLabel);
+			this->panel_options->Controls->Add(this->MaterialElasticityInput);
+			this->panel_options->Controls->Add(this->label_Elasticity);
+			this->panel_options->Controls->Add(this->YieldStrengthInput);
+			this->panel_options->Controls->Add(this->label_Yield);
+			this->panel_options->Controls->Add(this->MaterialDensityInput);
+			this->panel_options->Controls->Add(this->label_Density);
+			this->panel_options->Controls->Add(this->MaterialList);
+			this->panel_options->Controls->Add(this->label_Material);
+			this->panel_options->Controls->Add(this->panel4);
+			this->panel_options->Controls->Add(this->panel5);
+			this->panel_options->Controls->Add(this->panel6);
+			this->panel_options->Controls->Add(this->panel2);
+			this->panel_options->Controls->Add(this->treeView_Objects);
+			this->panel_options->Location = System::Drawing::Point(1745, 114);
+			this->panel_options->Name = L"panel_options";
+			this->panel_options->Size = System::Drawing::Size(371, 989);
+			this->panel_options->TabIndex = 1;
+			// 
+			// buttonAddVector
+			// 
+			this->buttonAddVector->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(63)), static_cast<System::Int32>(static_cast<System::Byte>(63)),
+				static_cast<System::Int32>(static_cast<System::Byte>(70)));
+			this->buttonAddVector->Dock = System::Windows::Forms::DockStyle::Top;
+			this->buttonAddVector->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->buttonAddVector->ForeColor = System::Drawing::SystemColors::Control;
+			this->buttonAddVector->Location = System::Drawing::Point(12, 719);
+			this->buttonAddVector->Name = L"buttonAddVector";
+			this->buttonAddVector->Size = System::Drawing::Size(343, 43);
+			this->buttonAddVector->TabIndex = 40;
+			this->buttonAddVector->Text = L"Add Growth Vector";
+			this->buttonAddVector->UseVisualStyleBackColor = false;
+			this->buttonAddVector->Click += gcnew System::EventHandler(this, &GUI::buttonAddVector_Click);
+			// 
+			// panel3
+			// 
+			this->panel3->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel3->Location = System::Drawing::Point(12, 707);
+			this->panel3->Name = L"panel3";
+			this->panel3->Size = System::Drawing::Size(343, 12);
+			this->panel3->TabIndex = 44;
+			// 
+			// TargetPanel
+			// 
+			this->TargetPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->TargetPanel->Controls->Add(this->TargetZInput);
+			this->TargetPanel->Controls->Add(this->TargetZLabel);
+			this->TargetPanel->Controls->Add(this->TargetYInput);
+			this->TargetPanel->Controls->Add(this->TargetYLabel);
+			this->TargetPanel->Controls->Add(this->TargetXInput);
+			this->TargetPanel->Controls->Add(this->TargetXLabel);
+			this->TargetPanel->Dock = System::Windows::Forms::DockStyle::Top;
+			this->TargetPanel->Location = System::Drawing::Point(12, 669);
+			this->TargetPanel->Name = L"TargetPanel";
+			this->TargetPanel->Size = System::Drawing::Size(343, 38);
+			this->TargetPanel->TabIndex = 50;
+			this->TargetPanel->Visible = false;
+			// 
+			// TargetZInput
+			// 
+			this->TargetZInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->TargetZInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->TargetZInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetZInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetZInput->Location = System::Drawing::Point(284, 0);
+			this->TargetZInput->Name = L"TargetZInput";
+			this->TargetZInput->Size = System::Drawing::Size(80, 38);
+			this->TargetZInput->TabIndex = 11;
+			this->TargetZInput->Text = L"8";
+			this->TargetZInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->TargetZInput->Visible = false;
+			// 
+			// TargetZLabel
+			// 
+			this->TargetZLabel->AutoSize = true;
+			this->TargetZLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetZLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetZLabel->Location = System::Drawing::Point(244, 0);
+			this->TargetZLabel->Name = L"TargetZLabel";
+			this->TargetZLabel->Size = System::Drawing::Size(40, 32);
+			this->TargetZLabel->TabIndex = 8;
+			this->TargetZLabel->Text = L"Z:";
+			this->TargetZLabel->Visible = false;
+			// 
+			// TargetYInput
+			// 
+			this->TargetYInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->TargetYInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->TargetYInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetYInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetYInput->Location = System::Drawing::Point(164, 0);
+			this->TargetYInput->Name = L"TargetYInput";
+			this->TargetYInput->Size = System::Drawing::Size(80, 38);
+			this->TargetYInput->TabIndex = 10;
+			this->TargetYInput->Text = L"0";
+			this->TargetYInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->TargetYInput->Visible = false;
+			// 
+			// TargetYLabel
+			// 
+			this->TargetYLabel->AutoSize = true;
+			this->TargetYLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetYLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetYLabel->Location = System::Drawing::Point(122, 0);
+			this->TargetYLabel->Name = L"TargetYLabel";
+			this->TargetYLabel->Size = System::Drawing::Size(42, 32);
+			this->TargetYLabel->TabIndex = 7;
+			this->TargetYLabel->Text = L"Y:";
+			this->TargetYLabel->Visible = false;
+			// 
+			// TargetXInput
+			// 
+			this->TargetXInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->TargetXInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->TargetXInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetXInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetXInput->Location = System::Drawing::Point(42, 0);
+			this->TargetXInput->Name = L"TargetXInput";
+			this->TargetXInput->Size = System::Drawing::Size(80, 38);
+			this->TargetXInput->TabIndex = 9;
+			this->TargetXInput->Text = L"0";
+			this->TargetXInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->TargetXInput->Visible = false;
+			// 
+			// TargetXLabel
+			// 
+			this->TargetXLabel->AutoSize = true;
+			this->TargetXLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->TargetXLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetXLabel->Location = System::Drawing::Point(0, 0);
+			this->TargetXLabel->Name = L"TargetXLabel";
+			this->TargetXLabel->Size = System::Drawing::Size(42, 32);
+			this->TargetXLabel->TabIndex = 6;
+			this->TargetXLabel->Text = L"X:";
+			this->TargetXLabel->Visible = false;
+			// 
+			// TargetNodeLabel
+			// 
+			this->TargetNodeLabel->Dock = System::Windows::Forms::DockStyle::Top;
+			this->TargetNodeLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->TargetNodeLabel->Location = System::Drawing::Point(12, 637);
+			this->TargetNodeLabel->Name = L"TargetNodeLabel";
+			this->TargetNodeLabel->Size = System::Drawing::Size(343, 32);
+			this->TargetNodeLabel->TabIndex = 48;
+			this->TargetNodeLabel->Text = L"Target Node";
+			this->TargetNodeLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->TargetNodeLabel->Visible = false;
+			// 
+			// SeedPanel
+			// 
+			this->SeedPanel->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->SeedPanel->Controls->Add(this->SeedZInput);
+			this->SeedPanel->Controls->Add(this->SeedZLabel);
+			this->SeedPanel->Controls->Add(this->SeedYInput);
+			this->SeedPanel->Controls->Add(this->SeedYLabel);
+			this->SeedPanel->Controls->Add(this->SeedXInput);
+			this->SeedPanel->Controls->Add(this->SeedXLabel);
+			this->SeedPanel->Dock = System::Windows::Forms::DockStyle::Top;
+			this->SeedPanel->Location = System::Drawing::Point(12, 599);
+			this->SeedPanel->Name = L"SeedPanel";
+			this->SeedPanel->Size = System::Drawing::Size(343, 38);
+			this->SeedPanel->TabIndex = 49;
+			this->SeedPanel->Visible = false;
+			// 
+			// SeedZInput
+			// 
+			this->SeedZInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->SeedZInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->SeedZInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedZInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedZInput->Location = System::Drawing::Point(284, 0);
+			this->SeedZInput->Name = L"SeedZInput";
+			this->SeedZInput->Size = System::Drawing::Size(80, 38);
+			this->SeedZInput->TabIndex = 5;
+			this->SeedZInput->Text = L"0";
+			this->SeedZInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->SeedZInput->Visible = false;
+			// 
+			// SeedZLabel
+			// 
+			this->SeedZLabel->AutoSize = true;
+			this->SeedZLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedZLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedZLabel->Location = System::Drawing::Point(244, 0);
+			this->SeedZLabel->Name = L"SeedZLabel";
+			this->SeedZLabel->Size = System::Drawing::Size(40, 32);
+			this->SeedZLabel->TabIndex = 2;
+			this->SeedZLabel->Text = L"Z:";
+			this->SeedZLabel->Visible = false;
+			// 
+			// SeedYInput
+			// 
+			this->SeedYInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->SeedYInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->SeedYInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedYInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedYInput->Location = System::Drawing::Point(164, 0);
+			this->SeedYInput->Name = L"SeedYInput";
+			this->SeedYInput->Size = System::Drawing::Size(80, 38);
+			this->SeedYInput->TabIndex = 4;
+			this->SeedYInput->Text = L"0";
+			this->SeedYInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->SeedYInput->Visible = false;
+			// 
+			// SeedYLabel
+			// 
+			this->SeedYLabel->AutoSize = true;
+			this->SeedYLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedYLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedYLabel->Location = System::Drawing::Point(122, 0);
+			this->SeedYLabel->Name = L"SeedYLabel";
+			this->SeedYLabel->Size = System::Drawing::Size(42, 32);
+			this->SeedYLabel->TabIndex = 1;
+			this->SeedYLabel->Text = L"Y:";
+			this->SeedYLabel->Visible = false;
+			// 
+			// SeedXInput
+			// 
+			this->SeedXInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->SeedXInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->SeedXInput->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedXInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedXInput->Location = System::Drawing::Point(42, 0);
+			this->SeedXInput->Name = L"SeedXInput";
+			this->SeedXInput->Size = System::Drawing::Size(80, 38);
+			this->SeedXInput->TabIndex = 3;
+			this->SeedXInput->Text = L"0";
+			this->SeedXInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->SeedXInput->Visible = false;
+			// 
+			// SeedXLabel
+			// 
+			this->SeedXLabel->AutoSize = true;
+			this->SeedXLabel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->SeedXLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedXLabel->Location = System::Drawing::Point(0, 0);
+			this->SeedXLabel->Name = L"SeedXLabel";
+			this->SeedXLabel->Size = System::Drawing::Size(42, 32);
+			this->SeedXLabel->TabIndex = 0;
+			this->SeedXLabel->Text = L"X:";
+			this->SeedXLabel->Visible = false;
+			// 
+			// SeedNodeLabel
+			// 
+			this->SeedNodeLabel->Dock = System::Windows::Forms::DockStyle::Top;
+			this->SeedNodeLabel->ForeColor = System::Drawing::SystemColors::Control;
+			this->SeedNodeLabel->Location = System::Drawing::Point(12, 567);
+			this->SeedNodeLabel->Name = L"SeedNodeLabel";
+			this->SeedNodeLabel->Size = System::Drawing::Size(343, 32);
+			this->SeedNodeLabel->TabIndex = 47;
+			this->SeedNodeLabel->Text = L"Seed Node";
+			this->SeedNodeLabel->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->SeedNodeLabel->Visible = false;
+			// 
+			// MaterialElasticityInput
+			// 
+			this->MaterialElasticityInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->MaterialElasticityInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->MaterialElasticityInput->Dock = System::Windows::Forms::DockStyle::Top;
+			this->MaterialElasticityInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->MaterialElasticityInput->Location = System::Drawing::Point(12, 529);
+			this->MaterialElasticityInput->Name = L"MaterialElasticityInput";
+			this->MaterialElasticityInput->Size = System::Drawing::Size(343, 38);
+			this->MaterialElasticityInput->TabIndex = 37;
+			this->MaterialElasticityInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->MaterialElasticityInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
+			// 
+			// label_Elasticity
+			// 
+			this->label_Elasticity->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label_Elasticity->ForeColor = System::Drawing::SystemColors::Control;
+			this->label_Elasticity->Location = System::Drawing::Point(12, 497);
+			this->label_Elasticity->Name = L"label_Elasticity";
+			this->label_Elasticity->Size = System::Drawing::Size(343, 32);
+			this->label_Elasticity->TabIndex = 35;
+			this->label_Elasticity->Text = L"Material Elasticity";
+			this->label_Elasticity->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			// 
+			// YieldStrengthInput
+			// 
+			this->YieldStrengthInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->YieldStrengthInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->YieldStrengthInput->Dock = System::Windows::Forms::DockStyle::Top;
+			this->YieldStrengthInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->YieldStrengthInput->Location = System::Drawing::Point(12, 459);
+			this->YieldStrengthInput->Name = L"YieldStrengthInput";
+			this->YieldStrengthInput->Size = System::Drawing::Size(343, 38);
+			this->YieldStrengthInput->TabIndex = 38;
+			this->YieldStrengthInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->YieldStrengthInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
+			// 
+			// label_Yield
+			// 
+			this->label_Yield->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label_Yield->ForeColor = System::Drawing::SystemColors::Control;
+			this->label_Yield->Location = System::Drawing::Point(12, 427);
+			this->label_Yield->Name = L"label_Yield";
+			this->label_Yield->Size = System::Drawing::Size(343, 32);
+			this->label_Yield->TabIndex = 34;
+			this->label_Yield->Text = L"Material Yield Strength";
+			this->label_Yield->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			// 
+			// MaterialDensityInput
+			// 
+			this->MaterialDensityInput->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->MaterialDensityInput->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->MaterialDensityInput->Dock = System::Windows::Forms::DockStyle::Top;
+			this->MaterialDensityInput->ForeColor = System::Drawing::SystemColors::Control;
+			this->MaterialDensityInput->Location = System::Drawing::Point(12, 389);
+			this->MaterialDensityInput->Name = L"MaterialDensityInput";
+			this->MaterialDensityInput->Size = System::Drawing::Size(343, 38);
+			this->MaterialDensityInput->TabIndex = 46;
+			this->MaterialDensityInput->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->MaterialDensityInput->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialInput_TextChanged);
+			// 
+			// label_Density
+			// 
+			this->label_Density->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label_Density->ForeColor = System::Drawing::SystemColors::Control;
+			this->label_Density->Location = System::Drawing::Point(12, 357);
+			this->label_Density->Name = L"label_Density";
+			this->label_Density->Size = System::Drawing::Size(343, 32);
+			this->label_Density->TabIndex = 45;
+			this->label_Density->Text = L"Material Density";
+			this->label_Density->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			// 
+			// MaterialList
+			// 
+			this->MaterialList->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(37)), static_cast<System::Int32>(static_cast<System::Byte>(37)),
+				static_cast<System::Int32>(static_cast<System::Byte>(38)));
+			this->MaterialList->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->MaterialList->Dock = System::Windows::Forms::DockStyle::Top;
+			this->MaterialList->ForeColor = System::Drawing::SystemColors::Control;
+			this->MaterialList->Items->Add(L"");
+			this->MaterialList->Items->Add(L"ABS");
+			this->MaterialList->Items->Add(L"PLA");
+			this->MaterialList->Location = System::Drawing::Point(12, 319);
+			this->MaterialList->Name = L"MaterialList";
+			this->MaterialList->ReadOnly = true;
+			this->MaterialList->Size = System::Drawing::Size(343, 38);
+			this->MaterialList->TabIndex = 39;
+			this->MaterialList->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->MaterialList->TextChanged += gcnew System::EventHandler(this, &GUI::MaterialList_TextChanged);
+			// 
+			// label_Material
+			// 
+			this->label_Material->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label_Material->ForeColor = System::Drawing::SystemColors::Control;
+			this->label_Material->Location = System::Drawing::Point(12, 287);
+			this->label_Material->Name = L"label_Material";
+			this->label_Material->Size = System::Drawing::Size(343, 32);
+			this->label_Material->TabIndex = 36;
+			this->label_Material->Text = L"Material";
+			this->label_Material->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			// 
+			// panel4
+			// 
+			this->panel4->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel4->Location = System::Drawing::Point(0, 287);
+			this->panel4->Name = L"panel4";
+			this->panel4->Size = System::Drawing::Size(12, 698);
+			this->panel4->TabIndex = 42;
+			// 
+			// panel5
+			// 
+			this->panel5->Dock = System::Windows::Forms::DockStyle::Right;
+			this->panel5->Location = System::Drawing::Point(355, 287);
+			this->panel5->Name = L"panel5";
+			this->panel5->Size = System::Drawing::Size(12, 698);
+			this->panel5->TabIndex = 43;
+			// 
+			// panel6
+			// 
+			this->panel6->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel6->Location = System::Drawing::Point(0, 275);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(367, 12);
+			this->panel6->TabIndex = 41;
+			// 
+			// panel2
+			// 
+			this->panel2->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
+			this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
+				static_cast<System::Int32>(static_cast<System::Byte>(48)));
+			this->panel2->Controls->Add(this->LabelProperties);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel2->ForeColor = System::Drawing::SystemColors::Control;
+			this->panel2->Location = System::Drawing::Point(0, 213);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(367, 62);
+			this->panel2->TabIndex = 1;
+			// 
+			// LabelProperties
+			// 
+			this->LabelProperties->AutoSize = true;
+			this->LabelProperties->BackColor = System::Drawing::Color::Transparent;
+			this->LabelProperties->Location = System::Drawing::Point(3, 15);
+			this->LabelProperties->Name = L"LabelProperties";
+			this->LabelProperties->Size = System::Drawing::Size(220, 32);
+			this->LabelProperties->TabIndex = 0;
+			this->LabelProperties->Text = L"Node Properties";
+			// 
+			// treeView_Objects
+			// 
+			this->treeView_Objects->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(28)), static_cast<System::Int32>(static_cast<System::Byte>(28)),
+				static_cast<System::Int32>(static_cast<System::Byte>(28)));
+			this->treeView_Objects->Dock = System::Windows::Forms::DockStyle::Top;
+			this->treeView_Objects->ForeColor = System::Drawing::SystemColors::Control;
+			this->treeView_Objects->LabelEdit = true;
+			this->treeView_Objects->Location = System::Drawing::Point(0, 0);
+			this->treeView_Objects->Name = L"treeView_Objects";
+			treeNode1->Name = L"Object";
+			treeNode1->Text = L"Object";
+			this->treeView_Objects->Nodes->AddRange(gcnew cli::array< System::Windows::Forms::TreeNode^  >(1) { treeNode1 });
+			this->treeView_Objects->Size = System::Drawing::Size(367, 213);
+			this->treeView_Objects->TabIndex = 0;
+			this->treeView_Objects->AfterSelect += gcnew System::Windows::Forms::TreeViewEventHandler(this, &GUI::ObjectSelect);
 			// 
 			// InstructionsPanel
 			// 
@@ -1117,6 +1196,7 @@ namespace Hephaestus
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(45)),
 				static_cast<System::Int32>(static_cast<System::Byte>(48)));
 			this->ClientSize = System::Drawing::Size(2128, 1116);
+			this->Controls->Add(this->panel_options);
 			this->Controls->Add(this->InstructionsPanel);
 			this->Controls->Add(this->ViewerPanel);
 			this->Controls->Add(this->PanelSeperator);
@@ -1132,12 +1212,6 @@ namespace Hephaestus
 			this->Text = L"Hephaestus";
 			this->PropertiesPanel->ResumeLayout(false);
 			this->PropertiesPanel->PerformLayout();
-			this->TargetPanel->ResumeLayout(false);
-			this->TargetPanel->PerformLayout();
-			this->SeedPanel->ResumeLayout(false);
-			this->SeedPanel->PerformLayout();
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->NodeSpacingInput))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ShearTensileSlider))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->StrainLimitInput))->EndInit();
@@ -1145,6 +1219,14 @@ namespace Hephaestus
 			this->PropertiesBar->PerformLayout();
 			this->ViewerPanel->ResumeLayout(false);
 			this->ViewerPanel->PerformLayout();
+			this->panel_options->ResumeLayout(false);
+			this->panel_options->PerformLayout();
+			this->TargetPanel->ResumeLayout(false);
+			this->TargetPanel->PerformLayout();
+			this->SeedPanel->ResumeLayout(false);
+			this->SeedPanel->PerformLayout();
+			this->panel2->ResumeLayout(false);
+			this->panel2->PerformLayout();
 			this->InstructionsPanel->ResumeLayout(false);
 			this->InstructionsPanel->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Logo))->EndInit();
@@ -1177,5 +1259,7 @@ namespace Hephaestus
 		System::Void HelpButton_Hoveroff(System::Object^  sender, System::EventArgs^  e);
 		System::Void InstructionsButton_Click(System::Object^  sender, System::EventArgs^  e);
 		System::Void TitleBar_MouseDown(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e);
-	};
+		System::Void ObjectSelect(System::Object^  sender, System::Windows::Forms::TreeViewEventArgs^  e);
+		System::Void buttonAddVector_Click(System::Object^  sender, System::EventArgs^  e);
+};
 }
